@@ -55,8 +55,12 @@ if(not sold)
 {
 	Print Mrp and sale price;
 
-	Show a mail button through which customer can contact the artist directly and enquire about the product more .
-	(pata nahi kaisa idea hai but mail ka subject me painting ka unique id apne aap fillup ho jaayega aisa kuch try karenge)
+	Show a mail button through which customer can contact the artist
+	 directly and enquire about the product more .
+
+	(pata nahi kaisa idea hai but mail ka subject me
+	 painting ka unique id apne aap fillup ho jaayega
+	  aisa kuch try karenge)
 
 }
 ```	
@@ -65,7 +69,7 @@ if(not sold)
 ## Login 
 * Two Types of login possible
 
- ### CUSTOMER through google login 
+ ### <span style="text-decoration: underline">CUSTOMER </span> through google login 
 *  CAN COMMENT ON ANY PAINTING( CAN BE REMOVED IF INAPPROPRIATE THROUGH admin dashboard)
 
 * CAN LIKE THE PAGE THOUGH appreciation button AT BOTTOM OF PAGE
@@ -73,7 +77,7 @@ if(not sold)
 * CAN COMMENT ON ANY BLOG( CAN BE REMOVED IF INAPPROPRIATE THROUGH admin dashboard)
 
  
-###  ADMIN  through admin email id
+###  <span style="text-decoration: underline">ADMIN </span> through admin email id
 * CAN ADD NEW BLOG
 * NEW PAINTING
 * CAN CHANGE STATUS OF PAINTING TO SOLD
