@@ -6,40 +6,41 @@
 # Main feature:
 (NOTE: KISIKO KOI SITE PATA HO JISSE INSPIRATION LE SAKTE HAI TO USKA LINK YEHA ATTACH KAR DENA)
 
-![Navbar Sample](/navbar-sample.jpg)
+ 
  
 ## Home 
 
 * simple full screen home page… 
 * Inspiration can be taken from https://shivanshrakesh.github.io/index.html (home page only)
 
+![Home](/website-ui/home.png)
+
 ## About 
 * life journey presented in nice ui 
 * may contain a intro para about the artist
-			
-
-## Portfolio
-* Will start with Resume
 * Metered knowledge skills
+![About1](/website-ui/about.png)
+![About2](/website-ui/about2.png)
+![About3](/website-ui/about3-unfinished.png)		
+
+## work
+* Will start with various tech stack known to artist
 * visitors review connected to admin dashboard  in texts with their names and designations 
-
-
-## Blog 
-* using API blog written on Ghost will pe presented on webpage
-* person can comment if they use google login
-* Appreciation counts/claps on the blogs
-
-
-## Gallery 
-* a collection of designer’s work or models
-* may contain various life event of the artist like(graduation day or met a celebrity,won any award),visited some place.
+* various work experience in cards with detail button which may be connected to an extenal link
+* there will be a concept of claps ..which only the logged in users can use..on every work ..
+* if unlogged person click on claps button they will be told to log in first
+![Work1](/website-ui/work.png)
+![Work2](/website-ui/work2.png)
 
 ## Artworks 
+* Inspiration can be taken from https://www.artisster.com/artworks/paintings/ 
 * Online shop for painting selling with payment option - cart feature enabled
-* price tag displayed
+* price tag displayed and -sorting options (price high to low , low to high , new arrival )
 * Maybe sorting of paintings by users based on hashtags used by the owner
 * cart icon will appear once user go to Artworks tab
-* Each painting will have some details
+* Each painting will have a like button ,an add to cart button,a comment button and some etail about being sold or not
+![Artwork1](/website-ui/artwork.png)
+![Artwork2](/website-ui/artwork2.png)
 
 ### sold(Yes/No)
 
@@ -64,7 +65,25 @@ if(not sold)
 
 }
 ```	
-![Mail Sample](/mail-sample.jpg)
+![Mail Sample](/website-ui/mail-sample.jpg)
+
+
+
+## Blog 
+* using API blog written on Ghost will pe presented on webpage
+* person can comment if they use google login
+* Appreciation counts/claps on the blogs
+![Blog](/website-ui/blog-unfinished.png)
+
+## Testimonials
+* People can add their thoughts after login by giving image ,name and thoughts.
+* will go to admin panel first for approval ( CAN BE REMOVED IF INAPPROPRIATE THROUGH admin dashboard)
+![Testimonial](/website-ui/testimonials.png)
+
+## Contact
+* it will be a simple form to conatct admin
+* user can give their email id on which admin can mail later
+![Contact](/website-ui/contact.png)
 
 ## Login 
 * Two Types of login possible
@@ -96,3 +115,4 @@ if(not sold)
 * Nextjs project hosting (WAISE GITHUB PE BHI TO KAR HI RAHE HAI)
 * Cms -content management system - sanity.io         strapi 
 
+ 
