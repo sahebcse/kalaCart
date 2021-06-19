@@ -1,5 +1,11 @@
 # kalaCart  
 
+![Test Image 1](navbar.jpg)
+
+![Test Image 2](“navbar.jpg”)
+
+![Test Image 3](/navbar.jpg)
+
 A completely responsive,dedicated webpage for a designer artist
 
 Main feature:
