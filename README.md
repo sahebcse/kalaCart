@@ -1,8 +1,6 @@
-# kalaCart
+# kalaCart  
 
-
-
-ArtHub-completely responsive,dedicated webpage for a designer artist
+A completely responsive,dedicated webpage for a designer artist
 
 Main feature:
 (NOTE: KISIKO KOI SITE PATA HO JISSE INSPIRATION LE SAKTE HAI TO USKA LINK YEHA ATTACH KAR DENA)
@@ -31,13 +29,12 @@ Main feature:
 
 5)Gallery 
 			-a collection of designer’s work or models
-			-may contain various life event of the artist like(graduation day or met 				a celebrity,won any award),visited some place
+			-may contain various life event of the artist like(graduation day or met a celebrity,won any award),visited some place.
 
 6)Artworks 
-			-Online shop for painting selling with payment option - cart feature					 enabled
+			-Online shop for painting selling with payment option - cart feature enabled
 			-price tag displayed
-			-Maybe sorting of paintings by users based on hashtags used by the   
-                                     owner
+			-Maybe sorting of paintings by users based on hashtags used by the owner
 			-cart icon will appear once user go to Artworks tab
 			-Each painting will have some details
 			-sold(Yes/No)
@@ -49,7 +46,8 @@ Main feature:
 				{
 					Print Mrp and sale price
 
-Show a mail button through which customer can contact the artist directly and enquire about the product more (pata nahi kaisa idea hai but mail ka subject me painting ka unique id apne aap fillup ho jaayega aisa kuch try karenge)
+					Show a mail button through which customer can contact the artist directly and enquire about the product more 
+					(pata nahi kaisa idea hai but mail ka subject me painting ka unique id apne aap fillup ho jaayega aisa kuch try karenge)
 				}
 
 7)Login  
