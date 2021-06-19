@@ -52,13 +52,15 @@ if(sold)
 
 ```	
 if(not sold)
-				{
-					Print Mrp and sale price;
+{
+	Print Mrp and sale price;
 
-					Show a mail button through which customer can contact the artist directly and enquire about the product more 
-					(pata nahi kaisa idea hai but mail ka subject me painting ka unique id apne aap fillup ho jaayega aisa kuch try karenge)
-				}
+	Show a mail button through which customer can contact the artist directly and enquire about the product more .
+	(pata nahi kaisa idea hai but mail ka subject me painting ka unique id apne aap fillup ho jaayega aisa kuch try karenge)
+
+}
 ```	
+![Mail Sample](/mail-sample.jpg)
 
 ## Login 
 * Two Types of login possible
@@ -79,12 +81,14 @@ if(not sold)
 * CAN DO ALL THE WORK ABOVE WHERE admin dashboard  IS MENTIONED
 
 
-Some other important skill jo sikh sakte hai isme...
+
+
+# Some other important skill jo sikh sakte hai isme...
 
 * Nextjs
 * Tailwind
 * Ghost next js integration
 * Seo-search engine optimisation- meta tag open graphs TAAKI SITE SEARCH ME UPAR AAYE
-* Nextjs project hosting (WASIE GITHUB PE BHI TO KAR HI RAHE HAI)
+* Nextjs project hosting (WAISE GITHUB PE BHI TO KAR HI RAHE HAI)
 * Cms -content management system - sanity.io         strapi 
 
