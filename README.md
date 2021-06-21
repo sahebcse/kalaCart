@@ -16,9 +16,9 @@
 * life journey presented in nice ui 
 * may contain a intro para about the artist
 
-![Img](/website-ui/web (2).png)
-![Img](/website-ui/web (12.png)
-![Img](/website-ui/web (8).png)		
+![Img](/website-ui/web(2).png)
+![Img](/website-ui/web(12.png)
+![Img](/website-ui/web(8).png)		
 
 ## work
 * Will start with various tech stack known to artist
@@ -26,8 +26,8 @@
 * various work experience in cards with detail button which may be connected to an extenal link
 * there will be a concept of claps ..which only the logged in users can use..on every work ..
 * if unlogged person click on claps button they will be told to log in first
-![Img](/website-ui/web (3).png)	 	
-![Img](/website-ui/web (10).png)		
+![Img](/website-ui/web(3).png)	 	
+![Img](/website-ui/web(10).png)		
 
 
 ## Artworks 
@@ -37,8 +37,8 @@
 * Maybe sorting of paintings by users based on hashtags used by the owner
 * cart icon will appear once user go to Artworks tab
 * Each painting will have a like button ,an add to cart button,a comment button and some detail about being sold or not
-![Img](/website-ui/web (4).png)		
-![Img](/website-ui/web (5).png)		
+![Img](/website-ui/web(4).png)		
+![Img](/website-ui/web(5).png)		
 
 
 ### sold(Yes/No)
@@ -62,22 +62,22 @@ if(not sold)
 * using API blog written on Ghost will pe presented on webpage
 * person can comment if they use google login
 * Appreciation counts/claps on the blogs
-![Img](/website-ui/web (6).png)		
-![Img](/website-ui/web (11).png)		
+![Img](/website-ui/web(6).png)		
+![Img](/website-ui/web(11).png)		
 
 
 ## Testimonials
 * People can add their thoughts after login by giving image ,name and thoughts.
 * will go to admin panel first for approval ( CAN BE REMOVED IF INAPPROPRIATE THROUGH admin dashboard)
-![Img](/website-ui/web (7).png)		
-![Img](/website-ui/web (13).png)		
+![Img](/website-ui/web(7).png)		
+![Img](/website-ui/web(13).png)		
 
 
 
 ## Contact
 * it will be a simple form to conatct admin
 * user can give their email id on which admin can mail later
-![Img](/website-ui/web (9).png)		
+![Img](/website-ui/web(9).png)		
 
 
 ## Login 
@@ -99,10 +99,10 @@ if(not sold)
 * CAN DO ALL THE WORK ABOVE WHERE admin dashboard  IS MENTIONED
 
 # ADMIN PANEL
-![Img](/website-ui/admin (4).png)
-![Img](/website-ui/admin (1).png)
-![Img](/website-ui/admin (2).png)
-![Img](/website-ui/admin (3).png)
+![Img](/website-ui/admin(4).png)
+![Img](/website-ui/admin(1).png)
+![Img](/website-ui/admin(2).png)
+![Img](/website-ui/admin(3).png)
 
 
 
