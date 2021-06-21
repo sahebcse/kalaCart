@@ -19,11 +19,8 @@ const siteRoutes=require('./routes/siteRoutes')
 const userRoutes=require('./routes/userRoutes')
 const blogRoutes=require('./routes/blogRoutes')
 const paintingRoutes=require('./routes/paintingRoutes')
-<<<<<<< HEAD
 const testimonialRoutes=require('./routes/testimonialRoutes')
-=======
 const projectRoutes=require('./routes/projectRoutes')
->>>>>>> bb3942be940305307f8471c13889e4108a458a3f
 
 //Utilities
 app.use(express.static('public'))
@@ -36,11 +33,8 @@ app.use('/', siteRoutes)
 app.use('/', blogRoutes)
 app.use('/', userRoutes)
 app.use('/',paintingRoutes)
-<<<<<<< HEAD
 app.use('/testimonial',testimonialRoutes)
-=======
 app.use('/', projectRoutes)
->>>>>>> bb3942be940305307f8471c13889e4108a458a3f
 
 //DB Connection
 mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
