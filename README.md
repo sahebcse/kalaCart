@@ -1,5 +1,6 @@
 # kalaCart  
 
+https://sahebcse.github.io/kalaCart/
 
 #### A completely responsive,dedicated webpage for a designer artist
 
@@ -38,7 +39,7 @@
 * price tag displayed and -sorting options (price high to low , low to high , new arrival )
 * Maybe sorting of paintings by users based on hashtags used by the owner
 * cart icon will appear once user go to Artworks tab
-* Each painting will have a like button ,an add to cart button,a comment button and some etail about being sold or not
+* Each painting will have a like button ,an add to cart button,a comment button and some detail about being sold or not
 ![Artwork1](/website-ui/artwork.png)
 ![Artwork2](/website-ui/artwork2.png)
 
