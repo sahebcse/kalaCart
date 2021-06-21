@@ -28,13 +28,9 @@ function App() {
     e.preventDefault()
 
     const data=new FormData()
-    data.append('title', title)
-    data.append('price', price)
-    data.append('content', content)
-    data.append('photo', photo)
-    console.log(data.getAll('photo'))
-    fetch('/painting/'+delId,{
-      method: "PUT",
+    data.append('testimonial', title)
+    fetch('/testimonial/123',{
+      method: "POST",
       body: data
     })
     .then((data)=>data.json())
@@ -50,8 +46,8 @@ function App() {
   {
     e.preventDefault()
     console.log('deleting...')
-    await fetch('/painting',{
-      method: "POST",
+    await fetch('/testimonial/'+delId,{
+      method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
       }

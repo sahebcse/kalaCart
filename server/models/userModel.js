@@ -9,6 +9,9 @@ const userSchema=new Schema({
         type: Boolean,
         default: true
     },
+    profilePic:{
+        type:String,
+    },
     password: String,
     boughtPaintings:[{type: Schema.Types.ObjectId, ref:'Painting'}]
 })

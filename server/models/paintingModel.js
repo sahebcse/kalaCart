@@ -19,15 +19,30 @@ const paintingSchema =new Schema({
     price:Number,
     description:String,
     numberSelled:Number,
-    photo:{
+    photo1:{
         type:String,
         required:true
+    },
+    photo2:{
+        type:String,
+    },
+    photo3:{
+        type:String,
     },
     inStock:{
         type:Boolean,
         default:true
     },
-    reviews:[reviewSchema]
+    reviews:[reviewSchema],
+    theme:{
+        type:String,
+        default:'Abstract'
+    },
+    creationTime:{
+        type:Date,
+        default: Date.now
+    }
+
 })
 
 const Painting = mongoose.model('Painting', paintingSchema);

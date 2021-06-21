@@ -16,6 +16,7 @@ const siteRoutes=require('./routes/siteRoutes')
 const userRoutes=require('./routes/userRoutes')
 const blogRoutes=require('./routes/blogRoutes')
 const paintingRoutes=require('./routes/paintingRoutes')
+const testimonialRoutes=require('./routes/testimonialRoutes')
 
 app.use(express.static('public'))
 app.use('/static', express.static('public'))
@@ -27,6 +28,7 @@ app.use('/', siteRoutes)
 app.use('/', blogRoutes)
 app.use('/', userRoutes)
 app.use('/',paintingRoutes)
+app.use('/testimonial',testimonialRoutes)
 
 
 mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
