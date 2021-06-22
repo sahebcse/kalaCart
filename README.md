@@ -10,14 +10,14 @@
 * simple full screen home page… 
 * Inspiration can be taken from https://shivanshrakesh.github.io/index.html (home page only)
 
-![Img](/website-ui/web (1).png)
+![Img](/website-ui/web(1).png)
 
 ## About 
 * life journey presented in nice ui 
 * may contain a intro para about the artist
 
 ![Img](/website-ui/web(2).png)
-![Img](/website-ui/web(12.png)
+![Img](/website-ui/web(12).png)
 ![Img](/website-ui/web(8).png)		
 
 ## work
