@@ -28,7 +28,7 @@ function Social() {
     return (
         <div>
             <List className={classes.list} >
-                <ListItemIcon className={classes.listitem}>
+                <ListItemIcon className={classes.listitem} onClick={()=> console.log(`Icon`)}>
                 <IconButton> <FacebookIcon/></IconButton>
                 <IconButton><TwitterIcon/></IconButton>
                 <IconButton><InstagramIcon/></IconButton>

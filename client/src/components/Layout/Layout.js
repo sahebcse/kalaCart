@@ -2,6 +2,8 @@ import React from 'react'
 import {Typography,Drawer,AppBar,Toolbar,Button} from '@material-ui/core'
 import {List,ListItem,ListItemIcon,ListItemText} from '@material-ui/core'
 import {makeStyles} from '@material-ui/styles'
+import {useHistory}  from 'react-router-dom'
+
 
 
 
@@ -17,6 +19,7 @@ const useStyles=makeStyles({
 
 function Layout() {
     const classes=useStyles()
+    const history=useHistory()
     const menuItems=[
         {
             text:"Home",
@@ -24,25 +27,26 @@ function Layout() {
         },
         {
             text:"About",
-            path:"/about"
+            path:"/About"
         },
         {
             text:"Artworks",
-            path:"/art"
+            path:"/Artwork"
         },
         {
             text:"blog",
-            path:"/blog"
+            path:"/Blog"
         },
         {
             text:"testimonial",
-            path:"/testimonial"
+            path:"/Testimonial"
         },
         {
             text:"contact",
-            path:"/contact"
+            path:"/Contact"
         }
     ]
+  
     return (
         <div>
          <AppBar>
@@ -51,7 +55,8 @@ function Layout() {
                      KalaCart
                  </Typography>
                  <List className={classes.list}>
-                     {menuItems.map((item)=>(<ListItem button key={item.text}>
+                     {menuItems.map((item)=>(<ListItem button key={item.text} 
+                       onClick={()=> history.push(item.path)}>
                          <ListItemText primary={item.text.toUpperCase()}/>
                      </ListItem>))}          
                  </List>
