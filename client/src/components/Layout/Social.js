@@ -15,7 +15,7 @@ const useStyles=makeStyles({
         flexDirection:"column-reverse",
         height: "0vh",
         alignItems: "flex-end",
-        marginRight: "2vh"
+        marginRight: "5vh"
 
     },
     listitem:{

@@ -18,23 +18,23 @@ function Home() {
 
 
       <div className="text-right container   pt-44 ">
-        <h1 className="  font-bold focus:ring-blue-600 sm:text-7xl md:text-8xl  ">Renzo Piano </h1>
-        <div className=" font-medium text-green-700   sm:text-5xl md:text-4xl ">
-          <p className="hover:text-yellow-500 inline-block  "> Artist </p>
-          <p className="hover:text-yellow-500 mr-6 ml-6 inline-block ">  . </p>
-          <p className="hover:text-yellow-500 inline-block">Athlete </p>
-          <p className="hover:text-yellow-500 mr-6 ml-6 inline-block "> . </p>
-          <p className="hover:text-yellow-500 inline-block  "> Designer </p>
+        <h1 className="  font-bold focus:ring-blue-600 sm:text-7xl md:text-6xl  ">Renzo Piano </h1>
+        <div className=" font-normal text-green-500   sm:text-5xl md:text-3xl ">
+          <p className="hover:text-yellow-500 inline-block animate-fade-in-down  "> Artist </p>
+          <p className="hover:text-yellow-500 mr-2 ml-2 inline-block  ">  . </p>
+          <p className="hover:text-yellow-500 inline-block animate-fade-in-down">Athlete </p>
+          <p className="hover:text-yellow-500 mr-2 ml-2 inline-block "> . </p>
+          <p className="hover:text-yellow-500 inline-block animate-fade-in-down "> Designer </p>
         </div>
       </div>
  
 
-      <div className="  font-normal text-1xl  text-blue-700   pt-36  float-right ">
-        <div className="text-center mr-20 ">
+      <div className="  font-medium text-1xl  text-black-600   pt-36  float-right ">
+        <div className="text-center mr-28  mt-16">
           <div>Congrats</div>
           <div className="inline-block">
-            You are
-            <p className="inline-block ml-4  text-2xl text-green-700 font-bold">{count}th</p>
+            You are ..
+            <p className="inline-block ml-1  text-2xl text-black-700 font-bold animate-wiggle">{count}th</p>
           </div>
           <div>visitor of this website</div>
         </div>
