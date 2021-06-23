@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../Layout/Layout'
 import Social from '../Layout/Social'
 import {Paper,Typography} from '@material-ui/core'
-import Image from '../img/bg.png'
+import Image from '../img/cover1.jpg'
 
 
 const count=1
@@ -14,8 +14,9 @@ const styles={
         Overflow:"auto"
     },
     title:{
-        margin:"-5px 0 10px",
-        color:"#fff",
+        margin:"70px 30px 10px 0px",
+        color:"black",
+        textAlign:"right"
     },
     locate:{
 
@@ -31,6 +32,7 @@ function Home() {
             <Typography variant='h4'>Artist.Athlete.Designer</Typography>
             </div>
             <div>
+                
                 <Typography variant="h5">Congrats!</Typography>
                 <Typography variant="h6">You are {count}th visitor of this website </Typography>
             </div>

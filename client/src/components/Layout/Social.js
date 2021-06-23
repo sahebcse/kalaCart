@@ -13,12 +13,13 @@ const useStyles=makeStyles({
         position: "relative",
         display: "flex",
         flexDirection:"column-reverse",
-        height: "100vh",
-        alignItems: "flex-end"
+        height: "0vh",
+        alignItems: "flex-end",
+        marginRight: "2vh"
 
     },
     listitem:{
-          backgroundColor:"#555",
+          backgroundColor:"#1b1a1a",
           flexDirection:"column-reverse"
     }
 })
@@ -29,10 +30,10 @@ function Social() {
         <div>
             <List className={classes.list} >
                 <ListItemIcon className={classes.listitem} onClick={()=> console.log(`Icon`)}>
-                <IconButton> <FacebookIcon/></IconButton>
-                <IconButton><TwitterIcon/></IconButton>
-                <IconButton><InstagramIcon/></IconButton>
-                <IconButton> <LinkedInIcon/></IconButton>                   
+                <IconButton> <FacebookIcon style={{ color: "white" }}/></IconButton>
+                <IconButton><TwitterIcon style={{ color: "white" }}/></IconButton>
+                <IconButton><InstagramIcon style={{ color: "white" }}/></IconButton>
+                <IconButton> <LinkedInIcon style={{ color: "white" }}/></IconButton>                   
                 </ListItemIcon>
             </List>
         </div>
