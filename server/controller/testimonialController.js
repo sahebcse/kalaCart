@@ -12,9 +12,9 @@ const getTestimonal= async (req,res)=>{
 
 const createTestimonial= async (req,res)=>{
     try {
-        const id = req.params.id
+        // const id = req.params.id
         const testimonial = await Testimonial.create({
-            user:id,
+            // user:id,
             testimonial:req.body.testimonial,
         })
 

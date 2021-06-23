@@ -12,7 +12,7 @@ function Home() {
   return (
     <div className=" bg-cover bg-center " style={{
       height: '100vh',
-      backgroundImage: `url("http://squareone.blog/wp-content/uploads/2018/04/Renzo-Piano.jpg")`
+      backgroundImage: `url(${Image})`
     }}>
       <Layout />
 

@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
 
-function test() {
-  const [title, setTitle]=useState('')
+
+function Testing() {
+    const [title, setTitle]=useState('')
   const [content, setContent]=useState('')
   const [photo, setPhoto]=useState(null)
   const [price, setPrice]=useState(0)
@@ -27,7 +28,7 @@ function test() {
 
     const data=new FormData()
     data.append('testimonial', title)
-    fetch('/testimonial/123',{
+    fetch('/testimonial',{
       method: "POST",
       body: data
     })
@@ -51,10 +52,10 @@ function test() {
       }
     })
     .then((data)=>data.json())
-  }
+}
     return (
-    <div className="App">
-      <form encType="multipart/form-data">
+        <div className="App">
+         <form encType="multipart/form-data">
         <label>Title</label>
         <input type="text" name="title" onChange={handleTitle}/>
         <label>Content</label>
@@ -65,7 +66,6 @@ function test() {
         <input type="text" name="price" onChange={(e)=>setPrice(parseInt(e.target.value))}/>
         <button onClick={handleSubmit}>Post!</button>
       </form>
-
       <form>
         <input type="text" onChange={handleDelId}/>
         <button onClick={handleDelete}>Delete</button>
@@ -74,4 +74,4 @@ function test() {
     )
 }
 
-export default test
+export default Testing
