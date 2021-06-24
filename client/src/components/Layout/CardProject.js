@@ -6,11 +6,11 @@ const useStyles = makeStyles((theme) => ({
     card: {
       maxWidth:500,
       maxHeight:300,
+      paddingRight:12,
       position:"relative",
       display: 'flex',
       borderRadius:'40px',
       backgroundColor:"#34ebeb",
-
     },
     cardContent:{
         display:"flex",
@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
 
     body:{
         paddingTop:'10vh',
+        display:"flex",
+        flexDirection:"row"
     },
     name:{
         color:"#fff",
@@ -32,23 +34,28 @@ const useStyles = makeStyles((theme) => ({
     text:{
       display:"flex",
       flexDirection:"column"
-
+    },
+    description:{
+        textWrap:"true"
     }
   }));
   
-  
-
 
 function CardProject() {
     const classes=useStyles()
+    const data={
+        projectTitle:"Blind Date",
+        projectDescription:"lorem oisiaofjodsjoijelkmlkofempooianoineoifoinoianeoinionaoindnfoidnonsoieromoinoinfoijipenoin"
+    }
     return ( 
          <div className={classes.body}>
             <Card className={classes.card}>
             <CardContent className={classes.cardContent}>
-                <CardHeader avatar={<Avatar className={classes.avatar} src={Image}></Avatar>}></CardHeader>
-                    <Typography className={classes.name} variant='h4'>{data.name}</Typography>
-                    <Typography variant="h5">{data.designation}</Typography>
-                    <Typography >{data.description}</Typography>
+                <CardHeader avatar={<Avatar className={classes.avatar} >{data.projectTitle[0].toUpperCase()}</Avatar>}></CardHeader>
+                <div className={classes.text}>
+                    <Typography className={classes.name} variant='h4'>{data.projectTitle}</Typography>
+                    <Typography className={classes.description}>{data.projectDescription}</Typography>
+                    </div>
                 </CardContent>
             </Card>
         </div>

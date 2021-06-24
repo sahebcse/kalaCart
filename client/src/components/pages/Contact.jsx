@@ -1,5 +1,6 @@
 import React from 'react'
-import Layout from '../Layout/Layout'
+import Navbar from '../Layout/Navbar'
+
 
 
 function Contact() {
@@ -8,9 +9,9 @@ function Contact() {
             height: '100vh',
             backgroundImage: `url("http://squareone.blog/wp-content/uploads/2018/04/Renzo-Piano.jpg")`
           }} >
-            <Layout/>
+             <Navbar />
              
-            <div className="pt-24 p-10 md:pl-96 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 border border-gray-200 ">
+            <div className=" h-screen   md:pl-80 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 border border-gray-200 ">
                 {/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
                 <form class="w-full max-w-lg">
                     <div class="flex flex-wrap -mx-3 mb-6">

@@ -1,7 +1,7 @@
 import './App.css';
 import Home from '../src/components/Home/Home'
 import {BrowserRouter,Switch,Route } from 'react-router-dom'
-import About from '../src/components/pages/About'
+import About from '../src/components/pages/About/About'
 import Testimonial from '../src/components/pages/Testimonial'
 import Contact from '../src/components/pages/Contact'
 import Artwork from '../src/components/pages/Artwork'

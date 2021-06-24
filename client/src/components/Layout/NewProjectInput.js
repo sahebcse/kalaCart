@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
       textAlign:"center",
     },
     body:{
-        paddingTop:'10vh',
+        paddingTop:'12vh',
     },
     btn:{
         marginTop:5,
@@ -69,7 +69,7 @@ function NewProjectInput() {
         }
     }
   return (
-    <Container>
+    <Container className={classes.body}>
     <Card className={classes.card}>
     <CardContent >
       <Typography variant="h6"
@@ -84,6 +84,7 @@ function NewProjectInput() {
       label="Project title"
       variant="outlined"
       color="secondary"
+      size="small"
       fullWidth
       required
       error={titleError}
@@ -94,6 +95,7 @@ function NewProjectInput() {
       label="Project Description"
       variant="outlined"
       color="secondary"
+      size="small"
       multiline
       rows={4}
       fullWidth
@@ -104,7 +106,7 @@ function NewProjectInput() {
      <Button  type="submit" variant="contained" color="primary" size="small"
       startIcon={<SendIcon/>}
       className={classes.btn}
-      >Submit</Button>
+      >Upload</Button>
     </form>
     </CardContent>
     </Card>

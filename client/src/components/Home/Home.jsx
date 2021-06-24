@@ -1,10 +1,10 @@
-import React from 'react'
-import Layout from '../Layout/Layout'
+import React from 'react' 
 import Social from '../Layout/Social'
 
 import Cover from '../img/cover1.jpg'
 import Image from '../img/cover1.jpg'
-
+import Navbar from '../Layout/Navbar'
+<Navbar />
 const count = 512;
 
 
@@ -14,10 +14,10 @@ function Home() {
       height: '100vh',
       backgroundImage: `url(${Image})`
     }}>
-      <Layout />
+      
+      <Navbar />
 
-
-      <div className="text-right container   pt-44 ">
+      <div className="text-right container   pt-20 ">
         <h1 className="  font-bold focus:ring-blue-600 sm:text-7xl md:text-6xl  ">Renzo Piano </h1>
         <div className=" font-normal text-green-500   sm:text-5xl md:text-3xl ">
           <p className="hover:text-yellow-500 inline-block animate-fade-in-down  "> Artist </p>
@@ -45,7 +45,7 @@ function Home() {
 
       </div>
 
-
+      
     </div>
 
   )

@@ -1,11 +1,12 @@
 import React from 'react'
-import Layout from '../Layout/Layout'
+import Navbar from '../Layout/Navbar'
+
 import Testing from '../testing/Testing'
 function Blog() {
     return (
-        <div>
-            {/* <Layout/> */}
-             <Testing/>
+        <div>             
+            <Navbar />
+            <Testing/>
         </div>
     )
 }
