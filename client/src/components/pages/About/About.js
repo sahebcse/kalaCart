@@ -1,10 +1,11 @@
 import React from 'react'
-import Layout from '../Layout/Layout'
+import Navbar from '../../Layout/Navbar'
+
 import {Typography} from '@material-ui/core'
 function About() {
     return (
         <div>
-            <Layout/>
+            <Navbar />
           <Typography variant ="h1">  About page </Typography>
          </div>
     )

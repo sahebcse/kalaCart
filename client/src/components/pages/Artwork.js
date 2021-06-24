@@ -1,9 +1,10 @@
 import React from 'react'
-import Layout from '../Layout/Layout'
+import Navbar from '../Layout/Navbar'
+
 function ArtWork() {
     return (
         <div>
-            <Layout/>
+            <Navbar /> 
             Artworks
         </div>
     )
