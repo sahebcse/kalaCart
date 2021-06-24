@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../Layout/Layout'
 import Social from '../Layout/Social'
-import { Paper, Typography } from '@material-ui/core'
+
 import Cover from '../img/cover1.jpg'
 import Image from '../img/cover1.jpg'
 

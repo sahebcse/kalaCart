@@ -1,7 +1,6 @@
 import React from 'react'
 import {Card,CardHeader,CardContent,Avatar,Typography } from '@material-ui/core' 
 import { makeStyles } from '@material-ui/styles'
-import Image from '../img/person(2).jpg'
 
 const useStyles = makeStyles((theme) => ({
     card: {
@@ -37,30 +36,23 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
   
+  
 
 
-function CardDesign() {
+function CardProject() {
     const classes=useStyles()
-    const data={
-       name:"Rohini Tejpal",
-       designation:"Design Student at Flipkart",
-       description:"racist by name and feminist by nature this person is Awesome ,i dont wanna exploid his carieer but he is also a sadist and always try to make other angry ",     
-    }
-
-    return (
-        <div className={classes.body}>
-            <Card className={classes.card} elevation={8} >
+    return ( 
+         <div className={classes.body}>
+            <Card className={classes.card}>
             <CardContent className={classes.cardContent}>
                 <CardHeader avatar={<Avatar className={classes.avatar} src={Image}></Avatar>}></CardHeader>
-                 <div className={classes.text}>
                     <Typography className={classes.name} variant='h4'>{data.name}</Typography>
                     <Typography variant="h5">{data.designation}</Typography>
                     <Typography >{data.description}</Typography>
-                 </div>
                 </CardContent>
             </Card>
         </div>
     )
 }
 
-export default CardDesign
+export default CardProject
