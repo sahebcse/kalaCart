@@ -41,11 +41,12 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 
-function CardProject() {
+function CardProject({project}) {
     const classes=useStyles()
     const data={
-        projectTitle:"Blind Date",
-        projectDescription:"lorem oisiaofjodsjoijelkmlkofempooianoineoifoinoianeoinionaoindnfoidnonsoieromoinoinfoijipenoin"
+        projectTitle:project.title,
+        projectDescription:project.description,
+        projectImage:project.photo
     }
     return ( 
          <div className={classes.body}>

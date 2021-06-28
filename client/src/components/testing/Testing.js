@@ -25,10 +25,13 @@ function Testing() {
   const handleSubmit=(e)=>
   {
     e.preventDefault()
-
+    console.log('starting....')
     const data=new FormData()
-    data.append('testimonial', title)
-    fetch('/testimonial',{
+    data.append('title', title)
+    data.append('description', content)
+    data.append('price', price)
+    data.append('photo', photo)
+    fetch('/painting',{
       method: "POST",
       body: data
     })

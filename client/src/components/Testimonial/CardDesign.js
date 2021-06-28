@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card,CardHeader,CardContent,Avatar,Typography } from '@material-ui/core' 
 import { makeStyles } from '@material-ui/styles'
-import Image from '../img/person(2).jpg'
+import Image from '../../static/img/person(2).jpg'
 
 const useStyles = makeStyles((theme) => ({
     card: {
@@ -39,8 +39,9 @@ const useStyles = makeStyles((theme) => ({
   
 
 
-function CardDesign() {
+function CardDesign({testimonial}) {
     const classes=useStyles()
+    //Not using the testimonial data yet have to set the name, desgnation and description dynamically after populationg user from backend
     const data={
        name:"Rohini Tejpal",
        designation:"Design Student at Flipkart",

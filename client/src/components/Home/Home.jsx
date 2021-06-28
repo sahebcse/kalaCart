@@ -1,21 +1,18 @@
 import React from 'react' 
 import Social from '../Layout/Social'
 
-import Cover from '../img/cover1.jpg'
-import Image from '../img/cover1.jpg'
-import Navbar from '../Layout/Navbar'
-<Navbar />
+import Image from '../../static/img/cover1.jpg'
 const count = 512;
 
 
 function Home() {
+  const user = JSON.parse(localStorage.getItem('profile'));
+  console.log('user exits',user);
   return (
     <div className=" bg-cover bg-center " style={{
       height: '100vh',
       backgroundImage: `url(${Image})`
     }}>
-      
-      <Navbar />
 
       <div className="text-right container   pt-20 ">
         <h1 className="  font-bold focus:ring-blue-600 sm:text-7xl md:text-6xl  ">Renzo Piano </h1>

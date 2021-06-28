@@ -12,7 +12,7 @@ const userSchema=new Schema({
     profilePic:{
         type:String,
     },
-    password: String,
+    googleId: String,
     boughtPaintings:[{type: Schema.Types.ObjectId, ref:'Painting'}]
 })
 

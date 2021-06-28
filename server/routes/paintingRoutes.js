@@ -2,7 +2,7 @@ const express = require('express')
 const multer = require('multer')
 
 const router = express.Router()
-const { createPainting, getPainting, deletePainting, updatePainting} = require('../controller/paintingController')
+const { createPainting, getPainting, deletePainting, updatePainting, createComment} = require('../controller/paintingController')
 
 const storage = multer.diskStorage({
     destination: function (req, res, cb){
@@ -23,5 +23,7 @@ router.post('/painting',upload.single('photo'), createPainting)
 router.delete('/painting/:id',deletePainting)
 
 router.put('/painting/:id', upload.single('photo'), updatePainting)
+
+router.post('/painting/comment', createComment)
 
 module.exports = router
