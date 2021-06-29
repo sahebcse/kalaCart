@@ -3,36 +3,22 @@ const mongoose=require('mongoose')
 const User=require('../models/userModel')
 const bcrypt=require('bcrypt')
 
-const createUser=(req, res)=>
+const createUser=async (req, res)=>
 {
-    const tempUser=new User({
+    const isadmin = (req.body.email=="admin email")
+    const user = await User.findOne({googleId:req.body.googleId});
+    if(user)
+        res.status(201).json({message:'user already exists'});
+    console.log(req.body,isadmin)
+    const tempUser=await User.create({
         name: req.body.name,
-        age: parseInt(req.body.age),
         email: req.body.email,
+        googleId:req.body.email,
+        profilePic:req.body.imageUrl,
+        isAdmin:isadmin
     })
     console.log(tempUser)
-    bcrypt.hash(req.body.password, 10, (err, hash)=>
-    {
-        if (err)
-        {
-            return console.log(err)
-        }
-        else
-        {
-            tempUser.password=hash
-            tempUser.save((err, result)=>
-            {
-                if (err)
-                {
-                    return res.status(403).json()
-                }
-                else
-                {
-                    return res.json(result)
-                }
-            })
-        }
-    })
+    res.status(200).json({message:"success"})
 }
 
 const getUser= (req, res)=>

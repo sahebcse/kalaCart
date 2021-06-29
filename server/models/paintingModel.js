@@ -18,8 +18,11 @@ const paintingSchema =new Schema({
     title: String,
     price:Number,
     description:String,
-    numberSelled:Number,
-    photo1:{
+    numberSelled:{
+        type:Number,
+        default:0
+    },
+    photo:{
         type:String,
         required:true
     },

@@ -4,9 +4,8 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container'
 import SendIcon from '@material-ui/icons/Send';
 import { makeStyles } from '@material-ui/styles'
-
-
-
+import { useDispatch} from 'react-redux';
+import { createProject} from '../../../action/user/user'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,13 +41,19 @@ const useStyles = makeStyles((theme) => ({
   
 
 function NewProjectInput() {
+    const dispatch = useDispatch();
     const classes=useStyles()
- 
+    const [photo, setPhoto] = useState('')
     const [projectTitle,setProjectTitle]=useState('');
     const [projectDescription,setProjectDescription]=useState('');
     const [titleError,setTitleError]=useState(false);
     const [descriptionError,setDescriptionError]=useState(false);
     
+
+    const handlePhoto=(e)=>
+    {
+        setPhoto(e.target.files[0]);
+    }
 
     const handleSubmit=(e)=>{
         e.preventDefault()
@@ -65,7 +70,11 @@ function NewProjectInput() {
     
         if(projectTitle && projectDescription)
         {
-          console.log(projectDescription,projectTitle); 
+          const data = new FormData();
+          data.append('title', projectTitle);
+          data.append('description', projectDescription);
+          data.append('photo', photo)
+          dispatch(createProject(data)) 
         }
     }
   return (
@@ -103,6 +112,9 @@ function NewProjectInput() {
       error={descriptionError}
     
       />
+
+    <label>Photo</label>
+    <input type="file" name="photo" onChange={handlePhoto}/>
      <Button  type="submit" variant="contained" color="primary" size="small"
       startIcon={<SendIcon/>}
       className={classes.btn}

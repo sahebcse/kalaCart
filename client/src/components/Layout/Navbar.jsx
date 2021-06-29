@@ -1,13 +1,21 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react';
-import logo from '../img/logo.png'
+import logo from '../../static/img/logo.png';
+import { useDispatch} from 'react-redux'
 
 const Navbar = () => {
+  const dispatch = useDispatch()
+  const [user,setUser] = useState(JSON.parse(localStorage.getItem('profile')))
   const [isActive, setActive] = useState(false);
   const openSidebar = () => {
     setActive(!isActive);
   };
+
+  const handleLogout = () => {
+    dispatch({type: 'LOGOUT'})
+    setUser(null);
+  }
   return (
     <header className="z-30 w-full pl-4 md:px-8 py-1 bg-white sm:px-4">
       <div className="flex items-center justify-between px-4">
@@ -59,8 +67,11 @@ const Navbar = () => {
             Contact
             </span>
           </a>
-
-          <button className="flex-none px-4 btn bg-green-400 rounded border-black border-2 ">Login</button>
+          {!user?(
+          <button className="flex-none px-4 btn bg-green-400 rounded border-black border-2 ">
+          <a href="/Login">Login</a>
+          </button>):
+          (<button className="flex-none px-4 btn bg-red-400 rounded border-black border-2 " onClick={handleLogout}>Logout</button>)}
 
         </div>
 
@@ -139,7 +150,7 @@ const Navbar = () => {
                   </li>
                 </a>
 
-                <a href=" ">
+                <a href="/Login">
                   <li className="px-6 py-1 my-2 bg-yellow-300 hover:bg-brand-600 hover:text-white rounded-full hover:bg-blue-400 font-bold text-center text-green-800 ">
                     Login
                   </li>

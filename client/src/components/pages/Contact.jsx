@@ -1,6 +1,4 @@
 import React from 'react'
-import Navbar from '../Layout/Navbar'
-
 
 
 function Contact() {
@@ -9,7 +7,6 @@ function Contact() {
             height: '100vh',
             backgroundImage: `url("http://squareone.blog/wp-content/uploads/2018/04/Renzo-Piano.jpg")`
           }} >
-             <Navbar />
              
             <div className=" h-screen   md:pl-80 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 border border-gray-200 ">
                 {/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
