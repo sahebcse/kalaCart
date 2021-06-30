@@ -3,7 +3,7 @@ const multer = require('multer')
 
 const router = express.Router()
 const { createPainting, getPainting, deletePainting, updatePainting, createComment} = require('../controller/paintingController')
-
+const {isAuthenticated} = require('../middleware/auth')
 const storage = multer.diskStorage({
     destination: function (req, res, cb){
         cb(null,'public/')
@@ -18,12 +18,12 @@ const upload = multer({ storage})
 
 router.get('/painting',getPainting)
 
-router.post('/painting',upload.single('photo'), createPainting)
+router.post('/painting', isAuthenticated, upload.single('photo'), createPainting)
 
-router.delete('/painting/:id',deletePainting)
+router.delete('/painting/:id', isAuthenticated, deletePainting)
 
-router.put('/painting/:id', upload.single('photo'), updatePainting)
+router.put('/painting/:id', isAuthenticated, upload.single('photo'), updatePainting)
 
-router.post('/painting/comment', createComment)
+router.post('/painting/comment', isAuthenticated, createComment)
 
 module.exports = router

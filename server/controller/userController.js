@@ -3,22 +3,28 @@ const mongoose=require('mongoose')
 const User=require('../models/userModel')
 const bcrypt=require('bcrypt')
 
+
 const createUser=async (req, res)=>
 {
-    const isadmin = (req.body.email=="admin email")
+    const isadmin = true
     const user = await User.findOne({googleId:req.body.googleId});
     if(user)
-        res.status(201).json({message:'user already exists'});
-    console.log(req.body,isadmin)
-    const tempUser=await User.create({
+        return res.status(201).json(user);
+
+    else
+    {
+        console.log(req.body,isadmin)
+        const tempUser=await User.create({
         name: req.body.name,
         email: req.body.email,
-        googleId:req.body.email,
+        googleId:req.body.googleId,
         profilePic:req.body.imageUrl,
         isAdmin:isadmin
-    })
-    console.log(tempUser)
-    res.status(200).json({message:"success"})
+        })
+        console.log(tempUser)
+        res.status(200).json({user: tempUser})
+    }
+        
 }
 
 const getUser= (req, res)=>

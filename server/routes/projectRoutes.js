@@ -3,6 +3,7 @@ const multer = require('multer')
 
 const router = express.Router()
 const { addProject, getProjects, deleteProject, editProject} = require('../controller/projectController')
+const {isAuthenticated} = require('../middleware/auth')
 
 const storage = multer.diskStorage({
     destination: function (req, res, cb){
@@ -18,7 +19,7 @@ const upload = multer({ storage})
 
 router.get('/projects',getProjects)
 
-router.post('/project',upload.single('photo'), addProject)
+router.post('/project',isAuthenticated, upload.single('photo'), addProject)
 
 router.delete('/project/:id',deleteProject)
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 import {Typography,Grid} from '@material-ui/core'
 import NewProjectInput from '../../components/Admin/Projects/NewProjectInput'
-import CardProject from '../Projects/CardProject' 
+import ProjectCard from '../Projects/ProjectCard' 
 import { useSelector } from 'react-redux';
 
 function About() {
@@ -11,14 +11,14 @@ function About() {
     const user = JSON.parse(localStorage.getItem('profile'))
     return (
         <div>
-          <NewProjectInput/>
-          <Grid container>
+          
+          <Grid className="bg-gray-900" container>
 
           {
               projects.map((project) =>{
                   return (
-                      <Grid key={project._id} sm={12} md={4}>
-                        <CardProject project={project}/>
+                      <Grid key={project._id} sm={12} md={12}>
+                        <ProjectCard project={project}/>
                       </Grid>
                   )
                 })

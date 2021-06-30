@@ -9,8 +9,10 @@ import Artwork from '../src/components/Paintings/Artwork'
 import Blog from './components/Blogs/Blog'
 import Navbar from './components/Layout/Navbar'
 import Login from './components/Auth/Login'
-import {getPaintings, getProjects, getTestimonials} from './action/user/user'
+import {getAuthData, getPaintings, getProjects, getTestimonials} from './action/user/user'
 import {useDispatch} from 'react-redux'
+import CreatePainting from './components/Admin/Paintings/createPainting';
+import NewProjectInput from './components/Admin/Projects/NewProjectInput';
 
 function App() {
   const dispatch = useDispatch()
@@ -25,6 +27,11 @@ function App() {
   useEffect(() =>{
     dispatch(getTestimonials());
   },[]);
+  
+  useEffect(()=>{
+    //console.log("This runs")
+    dispatch(getAuthData());
+  }, [])
 
 
 
@@ -39,6 +46,8 @@ function App() {
        <Route path="/Testimonial" exact><Testimonial/></Route>
        <Route path="/Contact" exact><Contact/></Route>
        <Route path="/Login" exact><Login/></Route>
+       <Route path='/admin/painting' exact> <CreatePainting/> </Route>
+       <Route path='/admin/project'> <NewProjectInput /> </Route>
      </Switch>
     </BrowserRouter>
   );
