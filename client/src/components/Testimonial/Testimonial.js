@@ -1,28 +1,30 @@
 import React from 'react'
 
-import CardDesign from './CardDesign'
-import {Container, Grid} from '@material-ui/core'
+import TestimonialCard from './TestimonialCard'
+import {Container, Grid, TextField} from '@material-ui/core'
 import {useSelector} from 'react-redux'
+import TestimonialForm from './TestimonialForm'
 
 function Testimonial() {
-    const user = JSON.parse(localStorage.getItem('profile'))
+    const user=useSelector((state)=>state.user.authData)
     const testimonials = useSelector((state) =>state.testimonials);
+    console.log(testimonials)
     return (
-        <Container>
-            {/* --> UNCOMMENT THIS WHEN YOU CREATE A FORM TO ADD TESTIMONIAL AND ACTUALLY CONNECT IT TO DATABASE <-- */}
-            {/* <Grid container>
+        <div className="">
+            <Container>
+            <div className="grid grid-cols-2 gap-4 ">
                 {
-                    testimonials.map((testimonial) =>{
-                        return (
-                            <Grid key={testimonial._id}>
-                                <CardDesign testimonial={testimonial}/>
-                            </Grid>
-                        )
-                    })
+                    testimonials.map((testimonial)=>(
+                        <TestimonialCard testimonial={testimonial}/>
+                    ))
                 }
-            </Grid> */}
-            <CardDesign/>
-        </Container>
+            </div>
+            
+            <TestimonialForm />
+
+            </Container>
+            
+        </div>
     )
 }
 
