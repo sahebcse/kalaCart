@@ -9,23 +9,6 @@ const createUser=async (req, res)=>
 {
     const isadmin = true
     const user = await User.findOne({googleId:req.body.googleId});
-<<<<<<< HEAD
-    if(user){
-        console.log('user present....')
-        res.status(201).json({message:'user already exists'});
-    }else{
-        console.log(req.body,isadmin)
-        const tempUser=await User.create({
-            name: req.body.name,
-            email: req.body.email,
-            googleId:req.body.email,
-            profilePic:req.body.imageUrl,
-            isAdmin:isadmin
-        })
-        console.log(tempUser)
-        res.status(200).json({message:"success"})
-    }
-=======
     if(user)
         return res.status(201).json(user);
 
@@ -43,7 +26,6 @@ const createUser=async (req, res)=>
         res.status(200).json({user: tempUser})
     }
         
->>>>>>> 2df0495195c6f71f0eadad223397b68b450433cf
 }
 
 const getUser= (req, res)=>
@@ -89,6 +71,7 @@ const deleteUser=(req, res)=>
 
 const addToCart=async (req,res)=>{
     try {
+        console.log(req.body)
         const { paintingId, userEmail} = req.body;
         const user = await User.findOne({email: userEmail});
         user.cartPaintings.push(paintingId);

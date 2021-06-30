@@ -70,11 +70,7 @@ const Login = () => {
                 <Typography variant="h3" color="primary">Login</Typography>
                 <GoogleLogin
                     // ---> CREATE YOUR OWN GOOGLE CLIENT FROM "console.developers.google.com" AND PASTE HERE (DELETE IT BEFORE PUSHING) <---
-<<<<<<< HEAD
-                    clientId="450652144538-1ovqbm1gbtjub49nlk0tdg71p32g5u6s.apps.googleusercontent.com"
-=======
                     clientId="845509955979-rd59hfvhufjcfnqfjnidlvm1mgqv1jkg.apps.googleusercontent.com"
->>>>>>> 2df0495195c6f71f0eadad223397b68b450433cf
                     render={(renderProps) => (
                     <Button color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<StartIcon />} variant="contained">
                         Google Sign In

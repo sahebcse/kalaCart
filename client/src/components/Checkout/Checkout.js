@@ -1,6 +1,7 @@
 import React from 'react'
 import {Container, Grid, Typography, Box} from '@material-ui/core'
 import CartItem from '../Shopping/CartItem'
+import ProjectCard from '../Projects/ProjectCard'
 import {useSelector} from 'react-redux'
 
 const Checkout = () => {

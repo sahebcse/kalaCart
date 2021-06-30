@@ -37,7 +37,7 @@ const ShoppingCart = () => {
                     <Typography variant="h4">Shopping Cart</Typography>
                     <Grid container>
                         {shoppingCart.map((painting)=>{
-                            return (<Grid item key={painting._id} sm={12} md={6}>
+                            return (<Grid item key={painting._id} sm={12} md={12}>
                                 <CartItem painting={painting}/>
                             </Grid>)
                         })} 
