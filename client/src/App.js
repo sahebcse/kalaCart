@@ -9,23 +9,30 @@ import Artwork from '../src/components/Paintings/Artwork'
 import Blog from './components/Blogs/Blog'
 import Navbar from './components/Layout/Navbar'
 import Login from './components/Auth/Login'
-import {getPaintings, getProjects, getTestimonials} from './action/user/user'
+import {getPaintings, getProjects, getTestimonials, getCartItems} from './action/user/user'
 import {useDispatch} from 'react-redux'
+import ShoppingCart from './components/Shopping/ShoppingCart';
+import Checkout from './components/Checkout/Checkout'
 
 function App() {
   const dispatch = useDispatch()
+  const user = JSON.parse(localStorage.getItem('profile'))
+    useEffect(() =>{
+        if(user){
+          dispatch(getCartItems(user?.result.email))
+        }
+    },[user])
   useEffect(() => {
     dispatch(getPaintings());
-  }, [])
+  }, [dispatch])
 
   useEffect(() =>{
     dispatch(getProjects());
-  },[]);
+  },[dispatch]);
 
   useEffect(() =>{
     dispatch(getTestimonials());
-  },[]);
-
+  },[dispatch]);
 
 
   return(
@@ -39,6 +46,8 @@ function App() {
        <Route path="/Testimonial" exact><Testimonial/></Route>
        <Route path="/Contact" exact><Contact/></Route>
        <Route path="/Login" exact><Login/></Route>
+       <Route path="/Cart" exact><ShoppingCart/></Route>
+       <Route path="/Checkout" exact><Checkout /></Route>
      </Switch>
     </BrowserRouter>
   );

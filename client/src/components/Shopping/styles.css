@@ -1,0 +1,38 @@
+/* .container{
+    margin-top: 10px;
+}
+
+.summary{
+    margin-left: 3px;
+    padding: 3px;
+    background-color:black;
+    color:darkgoldenrod
+}
+
+.cart{
+    margin-right:3px;
+    padding:3px;
+}*/
+
+
+
+.cart-details{
+    font-size: 16px;
+    margin: 4px;
+    display:flex;
+    padding: 3px;
+    justify-content: flex-start;
+    color:cadetblue;;
+    font-size: 24px;
+
+}
+.cart-total{
+    font-size: 16px;
+    margin:4px;
+    margin-top:60px;
+    display:flex;
+    justify-content:flex-start;
+    color:cadetblue;
+    font-size: 24px;
+
+} 

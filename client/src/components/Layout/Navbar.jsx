@@ -2,10 +2,12 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react';
 import logo from '../../static/img/logo.png';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCartTwoTone'
 import { useDispatch} from 'react-redux'
-
+import {Button} from '@material-ui/core'
 const Navbar = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const [user,setUser] = useState(JSON.parse(localStorage.getItem('profile')))
   const [isActive, setActive] = useState(false);
   const openSidebar = () => {
@@ -72,6 +74,10 @@ const Navbar = () => {
           <a href="/Login">Login</a>
           </button>):
           (<button className="flex-none px-4 btn bg-red-400 rounded border-black border-2 " onClick={handleLogout}>Logout</button>)}
+
+            <Button onClick={()=>history.push('/Cart')}>
+              <ShoppingCartIcon />
+            </Button>
 
         </div>
 

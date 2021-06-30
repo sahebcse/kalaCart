@@ -1,24 +1,28 @@
 const express=require('express')
 const mongoose=require('mongoose')
 const User=require('../models/userModel')
+const Painting= require('../models/paintingModel');
 const bcrypt=require('bcrypt')
 
 const createUser=async (req, res)=>
 {
     const isadmin = (req.body.email=="admin email")
     const user = await User.findOne({googleId:req.body.googleId});
-    if(user)
+    if(user){
+        console.log('user present....')
         res.status(201).json({message:'user already exists'});
-    console.log(req.body,isadmin)
-    const tempUser=await User.create({
-        name: req.body.name,
-        email: req.body.email,
-        googleId:req.body.email,
-        profilePic:req.body.imageUrl,
-        isAdmin:isadmin
-    })
-    console.log(tempUser)
-    res.status(200).json({message:"success"})
+    }else{
+        console.log(req.body,isadmin)
+        const tempUser=await User.create({
+            name: req.body.name,
+            email: req.body.email,
+            googleId:req.body.email,
+            profilePic:req.body.imageUrl,
+            isAdmin:isadmin
+        })
+        console.log(tempUser)
+        res.status(200).json({message:"success"})
+    }
 }
 
 const getUser= (req, res)=>
@@ -62,5 +66,58 @@ const deleteUser=(req, res)=>
     })
 }
 
+const addToCart=async (req,res)=>{
+    try {
+        const { paintingId, userEmail} = req.body;
+        const user = await User.findOne({email: userEmail});
+        user.cartPaintings.push(paintingId);
+        await user.save();
+        const painting = await Painting.findById(paintingId);
+        res.status(200).json(painting);
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-module.exports={createUser, getUser, getUsers, deleteUser}
+const getCartItems=async (req, res)=>{
+    try {
+        const { userEmail} = req.body;
+        console.log(req.body)
+        await User.findOne({email: userEmail}).populate('cartPaintings', 'title description price photo').exec((err,result)=>{
+            console.log(result)
+            return res.status(200).json(result.cartPaintings)
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const deleteCartItems=async (req, res)=>{
+    try {
+        const { userEmail} = req.body;
+        const user = await User.findOne({email: userEmail})
+        user.cartPaintings = [];
+        await user.save();
+        console.log(user)
+        res.status(201).json({message:'cart emptied successfully'});
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const removeItemFromCart=async (req, res)=>{
+    try {
+        const {paintingId, userEmail} = req.body;
+        console.log(paintingId)
+        const user = await User.findOne({email: userEmail});
+        const newCartPaintings = user.cartPaintings.filter((painting)=>String(painting)!==String(paintingId));
+        console.log(newCartPaintings)
+        user.cartPaintings = newCartPaintings;
+        await user.save();
+        res.status(201).json({message:'Item removed from cart successfully'});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports={createUser, getUser, getUsers, deleteUser, addToCart, getCartItems, deleteCartItems, removeItemFromCart}

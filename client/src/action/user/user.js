@@ -31,3 +31,26 @@ export const getTestimonials = ()=> async (dispatch)=>{
     const {data} = await api.getTestimonials();
     dispatch({type:'LOAD_TESTIMONIALS', payload:data});
 }
+
+export const addToCart = (sendData)=> async (dispatch)=>{
+    const {data} = await api.addToCart(sendData);
+    console.log(data);
+    dispatch({type:'ADD_TO_CART', payload:data});
+}
+
+export const getCartItems = (id)=> async (dispatch)=>{
+    const {data} = await api.getCartItems({userEmail:id});
+    console.log(data);
+    dispatch({type:'LOAD_SHOPPINGCART' ,payload:data})
+}
+
+export const deleteCartItems = (id)=> async (dispatch)=>{
+    await api.deleteCartItems(id);
+    console.log('deleted...');
+    dispatch({type:'DELETE_CART'});
+}
+
+export const removeItemFromCart = (sendData)=> async (dispatch)=>{
+    await api.removeItemFromCart(sendData);
+    dispatch({type:'REMOVE_CART_ITEM',payload:sendData.paintingId})
+}

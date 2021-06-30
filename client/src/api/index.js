@@ -14,3 +14,11 @@ export const createProject = (data)=>axios.post(`${URL}/project`,data);
 export const getProjects = (data)=>axios.get(`${URL}/projects`);
 
 export const getTestimonials = (data)=>axios.post(`${URL}/testimonial`);
+
+export const addToCart = (data)=>axios.post(`${URL}/user/addToCart`, data);
+
+export const getCartItems = (data)=>axios.post(`${URL}/user/getCartItems`,data);
+
+export const deleteCartItems = (data)=>axios.post(`${URL}/user/deleteCartItems`,data);
+
+export const removeItemFromCart = (data)=>axios.post(`${URL}/user/removeItemFromCart`,data);
