@@ -1,9 +1,17 @@
 import React,{useState} from 'react'
-import { Container, Grid, Typography, Paper, TextField, Button } from '@material-ui/core'
+import { Container, Grid, Typography, makeStyles, Paper, TextField, Button, Input } from '@material-ui/core'
 import { useDispatch } from 'react-redux';
 import { createPainting } from '../../../action/user/user'
 
+const useStyles=makeStyles((theme)=>(
+{
+    inputField: {
+        marginTop: theme.spacing(3)
+    }
+}))
+
 const CreatePainting = () => {
+    const classes=useStyles()
     const dispatch = useDispatch();
     const defaultPaintingData = {title:'', description:'', price:'', photo:''};
 
@@ -25,26 +33,27 @@ const CreatePainting = () => {
     }
     return (
         <Container component="main" maxWidth="sm">
-            <Paper elivation={3} align="center">
-                <Grid sm={12} md={4} align="center">
+            <Paper elevation={3} align="center">
+                <Grid sm={12} align="center">
                 <Typography variant="h4">Add Painting</Typography>
                 <form noValidate autoComplete="off" encType='multipart/form-data'>
-                    <TextField  label="Title" onChange={(e)=>setPainting({...painting,title:e.target.value})}/>
-                    <TextField  label="Price" onChange={(e)=>setPainting({...painting,price:e.target.value})}/>
+                    <TextField className={classes.inputField} variant="outlined" fullWidth label="Title" onChange={(e)=>setPainting({...painting,title:e.target.value})}/>
+                    <TextField className={classes.inputField} variant="outlined" fullWidth label="Price" onChange={(e)=>setPainting({...painting,price:e.target.value})}/>
                     <TextField
                         id="outlined-multiline-flexible"
                         label="Description"
-                        
+                        className={classes.inputField}
                         multiline
-                        rowsMax={4}
+                        fullWidth
+                        rows={4}
                         value={painting.description}
                         onChange={(e)=>{setPainting({...painting,description:e.target.value})}}
                         variant="outlined"
                     />
                     <label>Photo</label>
-                    <input type="file" name="photo" onChange={handlePhoto}/>
+                    <Input variant="outlined" type="file" name="photo" onChange={handlePhoto}/>
                 </form>
-                <Button variant="contained" color="primary" type="submit" onClick={handleSubmit}>Add</Button>
+                <button onClick={handleSubmit} className="text-black-600 bg-blue-200 my-3 hover:text-brand-700 hover:text-bold rounded-full py-3 px-6 hover:bg-green-400 hover:text-white">Add Painting</button>
                 </Grid>
             </Paper>
         </Container>

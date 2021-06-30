@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {Typography,TextField,Card,CardContent} from '@material-ui/core'
+import {Typography,TextField,Card,CardContent, Grid} from '@material-ui/core'
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container'
 import SendIcon from '@material-ui/icons/Send';
@@ -79,7 +79,10 @@ function NewProjectInput() {
     }
   return (
     <Container className={classes.body}>
-    <Card className={classes.card}>
+    <Grid container>
+      <Grid item xs={3}></Grid>
+      <Grid item xs={6}>
+      <Card className={classes.card}>
     <CardContent >
       <Typography variant="h6"
     color="textSecondary" className={classes.title}
@@ -115,13 +118,14 @@ function NewProjectInput() {
 
     <label>Photo</label>
     <input type="file" name="photo" onChange={handlePhoto}/>
-     <Button  type="submit" variant="contained" color="primary" size="small"
-      startIcon={<SendIcon/>}
-      className={classes.btn}
-      >Upload</Button>
+    <button onClick={handleSubmit} className="text-black-600 bg-blue-200 my-3 hover:text-brand-700 hover:text-bold rounded-full py-3 px-6 hover:bg-green-400 hover:text-white">Upload</button>
     </form>
     </CardContent>
     </Card>
+      </Grid>
+      <Grid item xs={3}></Grid>
+    </Grid>
+    
     </Container>
     )
 }

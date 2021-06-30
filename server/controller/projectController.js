@@ -11,7 +11,7 @@ const getProjects=async (req, res)=>
 
 const addProject=(req, res, next)=>
 {
-    console.log("The path was hit")
+    console.log("The project was added")
     console.log(req.file.filename)
     console.log(req.body)
     

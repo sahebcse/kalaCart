@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 
 const getTestimonal= async (req,res)=>{
     try {
-        const testimonial = await Testimonial.find().populate('user', 'name profilePic');
+        const testimonial = await Testimonial.find().populate('user');
         res.status(201).json(testimonial)
     } catch (error) {
         consolelog(error)
@@ -11,14 +11,20 @@ const getTestimonal= async (req,res)=>{
 }
 
 const createTestimonial= async (req,res)=>{
+    console.log(req.body)
+    console.log(req.body.user.result.googleId)
+    const user = await User.findOne({googleId:req.body.user.result.googleId});
+    //console.log(user)
+    
     try {
         // const id = req.params.id
         const testimonial = await Testimonial.create({
-            // user:id,
-            testimonial:req.body.testimonial,
+            user: user._id,
+            testimonial: req.body.thoughts,
+            identity: req.body.identity
         })
-
-        res.status(200).json(testimonial);
+        await testimonial.populate('user').execPopulate()
+        return res.json(testimonial)
     } catch (error) {
         console.log(error)
     }

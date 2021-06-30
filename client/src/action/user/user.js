@@ -32,6 +32,7 @@ export const getTestimonials = ()=> async (dispatch)=>{
     dispatch({type:'LOAD_TESTIMONIALS', payload:data});
 }
 
+<<<<<<< HEAD
 export const addToCart = (sendData)=> async (dispatch)=>{
     const {data} = await api.addToCart(sendData);
     console.log(data);
@@ -53,4 +54,17 @@ export const deleteCartItems = (id)=> async (dispatch)=>{
 export const removeItemFromCart = (sendData)=> async (dispatch)=>{
     await api.removeItemFromCart(sendData);
     dispatch({type:'REMOVE_CART_ITEM',payload:sendData.paintingId})
+=======
+export const createTestimonial=(sendData)=> async (dispatch)=>{
+    const {data}=await api.createTestimonial(sendData)
+    console.log(data)
+    dispatch({type: 'CREATE_TESTIMONIAL', payload:data})
+}
+
+export const getAuthData=()=>  (dispatch)=>{
+    const data= JSON.parse(localStorage.getItem('profile'))
+    console.log("This is getting dispatched")
+    console.log(data)
+    dispatch({type: 'LOAD_AUTHDATA', payload: data})
+>>>>>>> 2df0495195c6f71f0eadad223397b68b450433cf
 }

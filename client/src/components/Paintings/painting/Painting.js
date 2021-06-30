@@ -87,7 +87,7 @@ const Painting = ({painting, user}) => {
                         onChange={(e)=>{setComment(e.target.value)}}
                         variant="outlined"
                     />
-                    <Button color="primary" variant="contained" onClick={handleComment}>Add Comment</Button>
+                    <button onClick={handleComment} className="text-black-600 bg-blue-200 my-3 hover:text-brand-700 hover:text-bold rounded-full py-3 px-6 hover:bg-green-400 hover:text-white">Add Comment</button>
                     <Button onClick={handleAddToCart}><CartIcon/></Button>
                     <Button onClick={handleShop}><ShopIcon/></Button>
                     <Button onClick={handleViewComments}><CommentIcon/></Button>

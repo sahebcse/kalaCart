@@ -49,18 +49,21 @@ function CardProject({project}) {
         projectImage:project.photo
     }
     return ( 
-         <div className={classes.body}>
-            <Card className={classes.card}>
-            <CardContent className={classes.cardContent}>
-                <CardHeader avatar={<Avatar className={classes.avatar} >{data.projectTitle[0].toUpperCase()}</Avatar>}></CardHeader>
-                <div className={classes.text}>
-                    <Typography className={classes.name} variant='h4'>{data.projectTitle}</Typography>
-                    <Typography className={classes.description}>{data.projectDescription}</Typography>
-                    </div>
-                </CardContent>
-            </Card>
+        <div className="border-solid border-4 border-gray-200 max-w-md mx-auto m-3 border-opacity-400  bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+            <div className="md:flex">
+                <div className="md:flex-shrink-0">
+                    <img className="h-48 w-full object-cover md:h-full md:w-48" src={project.photo} alt="Man looking at item at a store" />
+                </div>
+                <div className="p-8">
+                <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Case Study</div>
+                <a href="#" className="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{project.title}</a>
+                <p className="mt-2 text-gray-500">{project.description}</p>
+                </div>
+            </div>
+
         </div>
     )
 }
 
 export default CardProject
+

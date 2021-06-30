@@ -4,10 +4,12 @@ const User=require('../models/userModel')
 const Painting= require('../models/paintingModel');
 const bcrypt=require('bcrypt')
 
+
 const createUser=async (req, res)=>
 {
-    const isadmin = (req.body.email=="admin email")
+    const isadmin = true
     const user = await User.findOne({googleId:req.body.googleId});
+<<<<<<< HEAD
     if(user){
         console.log('user present....')
         res.status(201).json({message:'user already exists'});
@@ -23,6 +25,25 @@ const createUser=async (req, res)=>
         console.log(tempUser)
         res.status(200).json({message:"success"})
     }
+=======
+    if(user)
+        return res.status(201).json(user);
+
+    else
+    {
+        console.log(req.body,isadmin)
+        const tempUser=await User.create({
+        name: req.body.name,
+        email: req.body.email,
+        googleId:req.body.googleId,
+        profilePic:req.body.imageUrl,
+        isAdmin:isadmin
+        })
+        console.log(tempUser)
+        res.status(200).json({user: tempUser})
+    }
+        
+>>>>>>> 2df0495195c6f71f0eadad223397b68b450433cf
 }
 
 const getUser= (req, res)=>

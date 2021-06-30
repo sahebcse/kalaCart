@@ -9,10 +9,17 @@ import Artwork from '../src/components/Paintings/Artwork'
 import Blog from './components/Blogs/Blog'
 import Navbar from './components/Layout/Navbar'
 import Login from './components/Auth/Login'
+<<<<<<< HEAD
 import {getPaintings, getProjects, getTestimonials, getCartItems} from './action/user/user'
 import {useDispatch} from 'react-redux'
 import ShoppingCart from './components/Shopping/ShoppingCart';
 import Checkout from './components/Checkout/Checkout'
+=======
+import {getAuthData, getPaintings, getProjects, getTestimonials} from './action/user/user'
+import {useDispatch} from 'react-redux'
+import CreatePainting from './components/Admin/Paintings/createPainting';
+import NewProjectInput from './components/Admin/Projects/NewProjectInput';
+>>>>>>> 2df0495195c6f71f0eadad223397b68b450433cf
 
 function App() {
   const dispatch = useDispatch()
@@ -32,7 +39,17 @@ function App() {
 
   useEffect(() =>{
     dispatch(getTestimonials());
+<<<<<<< HEAD
   },[dispatch]);
+=======
+  },[]);
+  
+  useEffect(()=>{
+    //console.log("This runs")
+    dispatch(getAuthData());
+  }, [])
+
+>>>>>>> 2df0495195c6f71f0eadad223397b68b450433cf
 
 
   return(
@@ -46,8 +63,13 @@ function App() {
        <Route path="/Testimonial" exact><Testimonial/></Route>
        <Route path="/Contact" exact><Contact/></Route>
        <Route path="/Login" exact><Login/></Route>
+<<<<<<< HEAD
        <Route path="/Cart" exact><ShoppingCart/></Route>
        <Route path="/Checkout" exact><Checkout /></Route>
+=======
+       <Route path='/admin/painting' exact> <CreatePainting/> </Route>
+       <Route path='/admin/project'> <NewProjectInput /> </Route>
+>>>>>>> 2df0495195c6f71f0eadad223397b68b450433cf
      </Switch>
     </BrowserRouter>
   );

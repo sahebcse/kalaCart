@@ -7,6 +7,11 @@ const user = (state={authData:null},action) => {
         case "LOGOUT":
             localStorage.clear()
             return {...state, authData:null};
+
+        case "LOAD_AUTHDATA":
+            console.log("THe action payload is :")
+            console.log(action.payload)
+            return {...state, authData:action.payload};
         
         default: 
         return state;
