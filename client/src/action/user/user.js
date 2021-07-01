@@ -32,7 +32,32 @@ export const getTestimonials = ()=> async (dispatch)=>{
     dispatch({type:'LOAD_TESTIMONIALS', payload:data});
 }
 
+export const addToCart = (sendData)=> async (dispatch)=>{
+    console.log(sendData);
+    const {data} = await api.addToCart(sendData);
+    console.log(data);
+    dispatch({type:'ADD_TO_CART', payload:data});
+}
+
+export const getCartItems = (id)=> async (dispatch)=>{
+    const {data} = await api.getCartItems({userEmail:id});
+    console.log(data);
+    dispatch({type:'LOAD_SHOPPINGCART' ,payload:data})
+}
+
+export const deleteCartItems = (id)=> async (dispatch)=>{
+    await api.deleteCartItems(id);
+    console.log('deleted...');
+    dispatch({type:'DELETE_CART'});
+}
+
+export const removeItemFromCart = (sendData)=> async (dispatch)=>{
+    await api.removeItemFromCart(sendData);
+    dispatch({type:'REMOVE_CART_ITEM',payload:sendData.paintingId})
+}
+
 export const createTestimonial=(sendData)=> async (dispatch)=>{
+    console.log('chal raha hai yeh.....')
     const {data}=await api.createTestimonial(sendData)
     console.log(data)
     dispatch({type: 'CREATE_TESTIMONIAL', payload:data})

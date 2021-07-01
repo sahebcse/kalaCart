@@ -42,4 +42,12 @@ export const createTestimonial= (data)=>axios.post(`${URL}/testimonial`, data, {
 
 export const getHits=()=>axios.get(`${URL}/hits`)
 
+export const addToCart = (data)=>axios.post(`${URL}/user/addToCart`, data);
+
+export const getCartItems = (data)=>axios.post(`${URL}/user/getCartItems`,data);
+
+export const deleteCartItems = (data)=>axios.post(`${URL}/user/deleteCartItems`,data);
+
+export const removeItemFromCart = (data)=>axios.post(`${URL}/user/removeItemFromCart`,data);
+
 export const postHit=()=>axios.post(`${URL}/hit`)

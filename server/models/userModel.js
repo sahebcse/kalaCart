@@ -13,7 +13,8 @@ const userSchema=new Schema({
         type:String,
     },
     googleId: String,
-    boughtPaintings:[{type: Schema.Types.ObjectId, ref:'Painting'}]
+    boughtPaintings:[{type: Schema.Types.ObjectId, ref:'Painting'}],
+    cartPaintings:[{type: Schema.Types.ObjectId, ref:'Painting'}],
 })
 
 const User=mongoose.model('User', userSchema)

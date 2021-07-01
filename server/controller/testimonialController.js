@@ -12,8 +12,7 @@ const getTestimonal= async (req,res)=>{
 
 const createTestimonial= async (req,res)=>{
     console.log(req.body)
-    console.log(req.body.user.result.googleId)
-    const user = await User.findOne({googleId:req.body.user.result.googleId});
+    const user = await User.findOne({email:req.body.email});
     //console.log(user)
     
     try {

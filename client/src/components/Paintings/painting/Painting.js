@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './styles.css'
 import { Container, Grid, Button, Typography, TextField } from '@material-ui/core'
-import { createComment} from '../../../action/user/user'
+import { createComment, addToCart} from '../../../action/user/user'
 import {useDispatch} from 'react-redux';
 
 import ShopIcon from '@material-ui/icons/Shop'
@@ -14,7 +14,8 @@ const Painting = ({painting, user}) => {
     const [comment, setComment] = useState('');
     const [reviews, setReviews] = useState(false);
     const handleAddToCart=()=>{
-
+        console.log(painting._id);
+        dispatch(addToCart({userEmail:user?.result.email, paintingId:painting._id}));
     }
 
     const handleShop=()=>{
@@ -25,7 +26,7 @@ const Painting = ({painting, user}) => {
     }
 
     const handleComment=()=>{
-        const data = {paintingId:painting._id, comment:comment, userEmail:user.result.email}
+        const data = {paintingId:painting._id, comment:comment, userEmail:user?.result.email}
         dispatch(createComment(data))
     }
 
@@ -74,7 +75,7 @@ const Painting = ({painting, user}) => {
                 {/* only admin can delete the post  */}
                 {user && user.isAdmin && <Button onClick={handleDelete}><DeleteIcon/></Button>}
                 {/* only user can buy and add to cart a painitng login to know more */}
-                {user && <div>
+                {<div>
                     <TextField
                         id="outlined-multiline-flexible"
                         label="Description"
@@ -91,7 +92,7 @@ const Painting = ({painting, user}) => {
                     <Button onClick={handleShop}><ShopIcon/></Button>
                     <Button onClick={handleViewComments}><CommentIcon/></Button>
                 </div>}
-                {!user && <Button onClick={handleViewComments}><CommentIcon/></Button>}
+                {/* {!user && <Button onClick={handleViewComments}><CommentIcon/></Button>} */}
             </Grid>
     )}
 }

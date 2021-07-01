@@ -72,7 +72,7 @@ const Login = () => {
                     // ---> CREATE YOUR OWN GOOGLE CLIENT FROM "console.developers.google.com" AND PASTE HERE (DELETE IT BEFORE PUSHING) <---
                     clientId="845509955979-rd59hfvhufjcfnqfjnidlvm1mgqv1jkg.apps.googleusercontent.com"
                     render={(renderProps) => (
-                    <Button color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<startIcon />} variant="contained">
+                    <Button color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<StartIcon />} variant="contained">
                         Google Sign In
                     </Button>
                     )}
