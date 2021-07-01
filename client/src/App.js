@@ -15,6 +15,11 @@ import ShoppingCart from './components/Shopping/ShoppingCart';
 import Checkout from './components/Checkout/Checkout'
 import CreatePainting from './components/Admin/Paintings/createPainting';
 import NewProjectInput from './components/Admin/Projects/NewProjectInput';
+import { loadStripe} from '@stripe/stripe-js'
+import {Elements} from '@stripe/react-stripe-js'
+import Orders from './components/Orders/Order'
+
+const promise = loadStripe("pk_test_51J8GAsSH4Sh8XwNi3Gw7LEGc44TQTY63b8VdJP4D3fHL30bpHIJKlhL7BKcxex80KPwDZg08Adywy5WTeKLZbngP00FQwvXLWv")
 
 function App() {
   const dispatch = useDispatch()
@@ -55,9 +60,14 @@ function App() {
        <Route path="/Contact" exact><Contact/></Route>
        <Route path="/Login" exact><Login/></Route>
        <Route path="/Cart" exact><ShoppingCart/></Route>
-       <Route path="/Checkout" exact><Checkout /></Route>
+       <Route path="/Checkout" exact>
+         <Elements stripe={promise}>
+          <Checkout />
+         </Elements>
+        </Route>
        <Route path='/admin/painting' exact> <CreatePainting/> </Route>
        <Route path='/admin/project'> <NewProjectInput /> </Route>
+       <Route path='/Orders'> <Orders /> </Route>
      </Switch>
     </BrowserRouter>
   );

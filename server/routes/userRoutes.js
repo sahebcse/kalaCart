@@ -1,7 +1,7 @@
 const express=require('express')
 const router=express.Router()
 const bcrypt=require('bcrypt')
-const {createUser, getUser, getUsers, deleteUser, addToCart, getCartItems, deleteCartItems, removeItemFromCart}=require('../controller/userController')
+const {createUser, getUser, getUsers, deleteUser, addToCart, getCartItems, deleteCartItems, removeItemFromCart, getClientSecretKey}=require('../controller/userController')
 
 router.post('/user', createUser)
 
@@ -18,5 +18,7 @@ router.post('/user/getCartItems', getCartItems)
 router.post('/user/deleteCartItems', deleteCartItems)
 
 router.post('/user/removeItemFromCart', removeItemFromCart)
+
+router.post('/user/getClientSecretKey', getClientSecretKey)
 
 module.exports=router

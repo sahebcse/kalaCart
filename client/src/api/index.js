@@ -51,3 +51,5 @@ export const deleteCartItems = (data)=>axios.post(`${URL}/user/deleteCartItems`,
 export const removeItemFromCart = (data)=>axios.post(`${URL}/user/removeItemFromCart`,data);
 
 export const postHit=()=>axios.post(`${URL}/hit`)
+
+export const getClientSecretKey = (data)=>axios.post(`${URL}/user/getClientSecretKey`,data);

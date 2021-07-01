@@ -69,3 +69,9 @@ export const getAuthData=()=>  (dispatch)=>{
     console.log(data)
     dispatch({type: 'LOAD_AUTHDATA', payload: data})
 }
+
+export const getClientSecretKey=async (sendData)=>{
+    const {data} =await api.getClientSecretKey(sendData)
+    console.log(data.clientSecret)
+    return data;
+}
