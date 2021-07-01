@@ -1,8 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import './styles.css'
-import { Container, Grid, Button, Typography, TextField } from '@material-ui/core'
+import { Container, Grid, Button, Typography, TextField, Box, ListItemIcon, ListItemText,List, ListItem} from '@material-ui/core'
+import InboxIcon from '@material-ui/icons/InboxTwoTone'
 import { createComment, addToCart} from '../../../action/user/user'
 import {useDispatch} from 'react-redux';
+import '@tensorflow/tfjs'
+import * as toxicity from '@tensorflow-models/toxicity'
 
 import ShopIcon from '@material-ui/icons/Shop'
 import CartIcon from '@material-ui/icons/LocalGroceryStore';
@@ -11,10 +14,16 @@ import CommentIcon from '@material-ui/icons/CommentRounded'
 
 const Painting = ({painting, user}) => {
     const dispatch = useDispatch()
+    const [model,setModel] = useState(null)
     const [comment, setComment] = useState('');
     const [reviews, setReviews] = useState(false);
+    const [error, setError] = useState(null);
+
+    useEffect(() =>{
+        toxicity.load(0.8).then(mod=>setModel(mod));
+    },[])
+    console.log(model)
     const handleAddToCart=()=>{
-        console.log(painting._id);
         dispatch(addToCart({userEmail:user?.result.email, paintingId:painting._id}));
     }
 
@@ -25,9 +34,37 @@ const Painting = ({painting, user}) => {
 
     }
 
-    const handleComment=()=>{
-        const data = {paintingId:painting._id, comment:comment, userEmail:user?.result.email}
-        dispatch(createComment(data))
+    const handleComment=async ()=>{
+        if(comment){
+            if(model){
+                await model.classify(comment).then(predictions =>{
+                    var result=0;
+                    console.log(predictions)
+                    for(let i=0;i<predictions.length;i++){
+                        if(predictions[i].results[0].match===true){
+                            result+=1;
+                        }
+                    }
+
+                    console.log(result)
+                    if(result===0){
+                        const data = {paintingId:painting._id, comment:comment, userEmail:user?.result.email}
+                        dispatch(createComment(data))
+                        setComment('')
+                    }else if(result===1){
+                        const data = {paintingId:painting._id, comment:comment, userEmail:user?.result.email}
+                        dispatch(createComment(data))
+                        setComment('')
+                        setError('Refrain from using toxic comments next time')
+                    }else{
+                        setComment('')
+                        setError('your comment has been deleted due toxicity.')
+                    }
+                })
+            }
+        } else{
+            setError('Add Comment')
+        }
     }
 
     const handleViewComments=()=>{
@@ -35,15 +72,41 @@ const Painting = ({painting, user}) => {
         setReviews(!reviews);
     }
 
+    const handleCommentChange=(e)=>{
+        e.preventDefault()
+        setError(null)
+        setComment(e.target.value)
+    }
+
     if(reviews){
         return (
             <Grid align="center">
-                    
-                    {painting.reviews.map((comment, i)=>{
-                        return <Typography key={i} variant="h6" >{comment.text}</Typography>
+
+                <List component="nav" aria-label="main mailbox folders">
+                {painting.reviews.map((comment, i)=>{
+                        return <ListItem>
+                        <ListItemIcon>
+                            <InboxIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={comment.text} />
+                        </ListItem>
                     })}
+                </List>
+                   
                     { user && <div>
-                        <Button color="primary" variant="contained" onClick={handleComment}>Add Comment</Button>
+                        <TextField
+                        id="outlined-multiline-flexible"
+                        label="Description"
+                        size="small"
+                        fullWidth
+                        multiline
+                        rowsMax={4}
+                        value={comment}
+                        onChange={handleCommentChange}
+                        variant="outlined"
+                    />
+                    {error && <p className="text-red-600 border-2 rounded-full">{error}</p> }
+                    <button disabled={!model} onClick={handleComment} className="text-black-600 bg-blue-200 my-3 hover:text-brand-700 hover:text-bold rounded-full py-3 px-6 hover:bg-green-400 hover:text-white">Add Comment</button>
                         <Button onClick={handleAddToCart}><CartIcon/></Button>
                         <Button onClick={handleShop}><ShopIcon/></Button>
                         <Button onClick={handleViewComments}><CommentIcon/></Button>
@@ -73,9 +136,9 @@ const Painting = ({painting, user}) => {
                     </div>
                 </div>
                 {/* only admin can delete the post  */}
-                {user && user.isAdmin && <Button onClick={handleDelete}><DeleteIcon/></Button>}
+                {/* {user && user.result.isAdmin && <Button onClick={handleDelete}><DeleteIcon/></Button>} */}
                 {/* only user can buy and add to cart a painitng login to know more */}
-                {<div>
+                {user && <div>
                     <TextField
                         id="outlined-multiline-flexible"
                         label="Description"
@@ -84,10 +147,11 @@ const Painting = ({painting, user}) => {
                         multiline
                         rowsMax={4}
                         value={comment}
-                        onChange={(e)=>{setComment(e.target.value)}}
+                        onChange={handleCommentChange}
                         variant="outlined"
                     />
-                    <button onClick={handleComment} className="text-black-600 bg-blue-200 my-3 hover:text-brand-700 hover:text-bold rounded-full py-3 px-6 hover:bg-green-400 hover:text-white">Add Comment</button>
+                    {error && <p className="text-red-600 border-2 rounded-full">{error}</p> }
+                    <button disabled={!model} onClick={handleComment} className="text-black-600 bg-blue-200 my-3 hover:text-brand-700 hover:text-bold rounded-full py-3 px-6 hover:bg-green-400 hover:text-white">Add Comment</button>
                     <Button onClick={handleAddToCart}><CartIcon/></Button>
                     <Button onClick={handleShop}><ShopIcon/></Button>
                     <Button onClick={handleViewComments}><CommentIcon/></Button>

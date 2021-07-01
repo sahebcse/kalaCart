@@ -42,6 +42,8 @@ const Checkout = () => {
 
         if(totalPrice>1){
             getClientSecret()
+        }else{
+            setError('Go and shop first faggot....')
         }
     },[shoppingCart,totalPrice])
 
@@ -100,7 +102,7 @@ const Checkout = () => {
                             <Button type="submit" disabled={processing || disabled || succeeded}>
                                 <ShopNowIcon /><span>{processing ? <p>Processing</p> : "Buy Now"}</span>
                             </Button>
-                            {error && <div>{error}</div> }
+                            {error && <div className="text-red-600">{error}</div> }
                         </form>
                     </Grid>
                     {/* </Grid> */}
