@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import {useDispatch} from 'react-redux'
 import ShopNowIcon from '@material-ui/icons/ShopTwoRounded'
-import {getClientSecretKey} from '../../action/user/user'
+import {getClientSecretKey, productOrdered} from '../../action/user/user'
 import {useHistory} from 'react-router-dom'
 
 const Checkout = () => {
@@ -15,6 +15,8 @@ const Checkout = () => {
     const stripe = useStripe()
     const elements = useElements() 
     const shoppingCart = useSelector((state) =>state.shoppingcart)
+
+    const user = JSON.parse(localStorage.getItem('profile'))
 
     const [error,setError] = useState(null, stripe)
     const [disabled, setDisabled] = useState(true);
@@ -54,12 +56,13 @@ const Checkout = () => {
             setSucceeded(true)
             setError(null)
             setProcessing(false);
-
+            const data = {userEmail :user?.result.email}
+            dispatch(productOrdered(data))
             history.replace('/Orders')
         })
 
     }
-    console.log('cient secret....',clientSecret)
+   
     const handleChange = (e)=>{
         setDisabled(e.empty)
         setError(e.error ? e.error.message : "")

@@ -39,10 +39,11 @@ export const addToCart = (sendData)=> async (dispatch)=>{
     dispatch({type:'ADD_TO_CART', payload:data});
 }
 
-export const getCartItems = (id)=> async (dispatch)=>{
-    const {data} = await api.getCartItems({userEmail:id});
+export const getCartAndBoughtItems = (id)=> async (dispatch)=>{
+    const {data} = await api.getCartAndBoughtItems({userEmail:id});
     console.log(data);
-    dispatch({type:'LOAD_SHOPPINGCART' ,payload:data})
+    dispatch({type:'LOAD_SHOPPINGCART' ,payload:data.cartPaintings})
+    dispatch({type:'LOAD_ORDERS', payload:data.boughtPaintings})
 }
 
 export const deleteCartItems = (id)=> async (dispatch)=>{
@@ -74,4 +75,10 @@ export const getClientSecretKey=async (sendData)=>{
     const {data} =await api.getClientSecretKey(sendData)
     console.log(data.clientSecret)
     return data;
+}
+
+export const productOrdered=(sendData)=>async (dispatch)=>{
+    const {data} = await api.productOrdered(sendData)
+    dispatch({type:'ORDER_PRODUCT', payload: data})
+    dispatch({type:'DELETE_CART'})
 }
