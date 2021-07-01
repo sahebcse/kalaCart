@@ -3,6 +3,7 @@ import { useHistory, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import logo from '../../static/img/logo.png';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartTwoTone'
+import LocalMallIcon from '@material-ui/icons/LocalMall';
 import {Button} from '@material-ui/core'
 import { useDispatch, useSelector} from 'react-redux'
 import {getAuthData} from '../../action/user/user'
@@ -49,7 +50,7 @@ const Navbar = () => {
 
           </span>
         </a>
-        <div className="hidden ml-[10%] md:flex uppercase tracking-widest gap-7 justify-between cursor-pointer">
+        <div className="hidden ml-[10%] md:flex uppercase tracking-widest gap-1 justify-between cursor-pointer">
           <Link to="/">
             <span className="text-black-600 hover:text-brand-700 hover:text-bold rounded-full py-3 px-6 hover:bg-green-400 hover:text-white">
               Home
@@ -93,10 +94,19 @@ const Navbar = () => {
             Logout
             </span></Link>)}
             
-            <Button onClick={()=>history.push('/Cart')} >
-              <ShoppingCartIcon />
-               Go TO Cart
-            </Button>
+            {user && (
+              <div>
+              <Button variant="outlined" color="primary" onClick={()=>history.push('/Cart')} >
+                <ShoppingCartIcon />
+                Go TO Cart
+              </Button>
+
+              <Button variant="outlined"  color="secondary" onClick={()=>history.push('/Orders')} >
+                <LocalMallIcon />
+                Your Orders
+              </Button>
+              </div>
+            )}
           
       
         </div>

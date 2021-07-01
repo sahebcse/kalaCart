@@ -4,6 +4,7 @@ const cors=require('cors')
 const app=express()
 const mongoose=require('mongoose')
 const bcrypt=require('bcrypt')
+const stripe=require('stripe')('sk_test_51J8GAsSH4Sh8XwNi5Xis1Tr8xfxwmGyCAQLXeYjduWsCwIFxu11ai2ysISs4JmcO8NtZhwOZNpkzLSm0sfb56dnP00R8VRxPBm')
 var multer  = require('multer')
 
 //Connection Data

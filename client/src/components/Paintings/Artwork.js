@@ -8,6 +8,7 @@ import CreatePainting from '../Admin/Paintings/createPainting'
 
 function ArtWork() {
     const user = useSelector((state)=>state.user.authData)
+    console.log('art user',user)
     const paintings = useSelector((state)=>state.paintings);
     console.log(paintings) 
     return (

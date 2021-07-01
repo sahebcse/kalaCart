@@ -44,10 +44,15 @@ export const getHits=()=>axios.get(`${URL}/hits`)
 
 export const addToCart = (data)=>axios.post(`${URL}/user/addToCart`, data);
 
-export const getCartItems = (data)=>axios.post(`${URL}/user/getCartItems`,data);
+export const getCartAndBoughtItems = (data)=>axios.post(`${URL}/user/getCartAndBoughtItems`,data);
 
 export const deleteCartItems = (data)=>axios.post(`${URL}/user/deleteCartItems`,data);
 
 export const removeItemFromCart = (data)=>axios.post(`${URL}/user/removeItemFromCart`,data);
 
 export const postHit=()=>axios.post(`${URL}/hit`)
+
+export const getClientSecretKey = (data)=>axios.post(`${URL}/user/getClientSecretKey`,data);
+
+export const productOrdered = (data)=>axios.post(`${URL}/user/productOrdered`,data);
+

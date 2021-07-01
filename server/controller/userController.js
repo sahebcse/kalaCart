@@ -3,6 +3,7 @@ const mongoose=require('mongoose')
 const User=require('../models/userModel')
 const Painting= require('../models/paintingModel');
 const bcrypt=require('bcrypt')
+const stripe=require('stripe')('sk_test_51J8GAsSH4Sh8XwNi5Xis1Tr8xfxwmGyCAQLXeYjduWsCwIFxu11ai2ysISs4JmcO8NtZhwOZNpkzLSm0sfb56dnP00R8VRxPBm')
 
 
 const createUser=async (req, res)=>
@@ -83,13 +84,15 @@ const addToCart=async (req,res)=>{
     }
 }
 
-const getCartItems=async (req, res)=>{
+const getCartAndBoughtItems=async (req, res)=>{
     try {
         const { userEmail} = req.body;
         console.log(req.body)
-        await User.findOne({email: userEmail}).populate('cartPaintings', 'title description price photo').exec((err,result)=>{
+        await User.findOne({email: userEmail}).populate('cartPaintings', 'title description price photo')
+        .populate('boughtPaintings', 'title description price photo')
+        .exec((err,result)=>{
             console.log(result)
-            return res.status(200).json(result.cartPaintings)
+            return res.status(200).json({cartPaintings:result.cartPaintings, boughtPaintings:result.boughtPaintings})
         })
     } catch (error) {
         console.log(error);
@@ -124,4 +127,37 @@ const removeItemFromCart=async (req, res)=>{
     }
 }
 
-module.exports={createUser, getUser, getUsers, deleteUser, addToCart, getCartItems, deleteCartItems, removeItemFromCart}
+const getClientSecretKey= async (req, res)=>{
+    try {
+        console.log('this is working')
+        const {totalPrice} = req.body;
+        console.log(totalPrice)
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: parseInt(totalPrice),
+            currency:'INR',
+        })
+
+        console.log('leaving....',paymentIntent.client_secret)
+
+        res.status(200).json({clientSecret: paymentIntent.client_secret});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const productOrdered = async (req, res) => {
+    try {
+        const {userEmail} = req.body;
+        const user = await User.findOne({email: userEmail})
+        const cartPaintingList = user.cartPaintings
+        user.boughtPaintings = [...user.boughtPaintings,...user.cartPaintings]
+        user.cartPaintings = [];
+        await user.save();
+        res.status(201).json(cartPaintingList)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+module.exports={createUser, getUser, getUsers, deleteUser, addToCart, getCartAndBoughtItems, deleteCartItems, removeItemFromCart, getClientSecretKey, productOrdered}
