@@ -15,6 +15,7 @@ import ShoppingCart from './components/Shopping/ShoppingCart';
 import Checkout from './components/Checkout/Checkout'
 import CreatePainting from './components/Admin/Paintings/createPainting';
 import NewProjectInput from './components/Admin/Projects/NewProjectInput';
+import PaintingExpanded from './components/Paintings/painting/PaintingExpanded'
 import { loadStripe} from '@stripe/stripe-js'
 import {Elements} from '@stripe/react-stripe-js'
 import Orders from './components/Orders/Order'
@@ -65,9 +66,13 @@ function App() {
           <Checkout />
          </Elements>
         </Route>
+        <Route path='/painting/:id' exact>
+          <PaintingExpanded />
+        </Route>
        <Route path='/admin/painting' exact> <CreatePainting/> </Route>
        <Route path='/admin/project'> <NewProjectInput /> </Route>
        <Route path='/Orders'> <Orders /> </Route>
+       
      </Switch>
     </BrowserRouter>
   );

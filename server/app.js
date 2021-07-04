@@ -14,6 +14,7 @@ const CONNECTION_URL = 'mongodb://localhost/kalakart1'
 //Models
 const User=require('./models/userModel')
 const Blog=require('./models/blogModel')
+const Painting=require('./models/paintingModel')
 
 //Routes
 const siteRoutes=require('./routes/siteRoutes')
@@ -29,6 +30,8 @@ app.use('/static', express.static('public'))
 app.use(express.json({limit:"30mb", extended:true}))
 app.use(express.urlencoded({limit:"30mb", extended:true}))
 app.use(cors())
+
+
 
 app.use('/', siteRoutes)
 app.use('/', blogRoutes)
