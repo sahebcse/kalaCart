@@ -11,7 +11,7 @@ var storage = multer.diskStorage({
     }
   })
   
-var upload = multer({ storage: storage })
+var upload = multer({ storage: storage, limits: { fieldSize: 2 * 1024 * 1024 } })
 
 const {getPosts, addPost, deletePost, editPost}=require('../controller/blogController')
 

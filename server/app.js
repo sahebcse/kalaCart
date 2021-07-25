@@ -40,6 +40,8 @@ app.use('/',paintingRoutes)
 app.use('/testimonial',testimonialRoutes)
 app.use('/', projectRoutes)
 
+
+
 //DB Connection
 mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(()=>app.listen(PORT, ()=>{console.log(`server up and running on port ${PORT}`)}))

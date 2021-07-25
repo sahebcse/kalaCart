@@ -56,3 +56,6 @@ export const getClientSecretKey = (data)=>axios.post(`${URL}/user/getClientSecre
 
 export const productOrdered = (data)=>axios.post(`${URL}/user/productOrdered`,data);
 
+export const addPost = (data)=>axios.post(`${URL}/post`, data);
+
+export const getPosts=()=>axios.get(`${URL}/posts`)

@@ -139,7 +139,7 @@ const Painting = ({painting, user}) => {
                     <div>
                         <p className="text-gray-400 ">Got something to add?</p>
                         <input type="text" onChange={handleCommentChange} className="border-2 mt-5 border-gray-400 p-2 border-opacity-40 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-opacity-0"/>
-                        <button onClick={handleAddToCart} className="p-2 mt-5 border-black border-2 hover:bg-black hover:ring-2 hover:ring-black hover:text-white">COMMENT</button>
+                        <button onClick={handleCommentSubmit} className="p-2 mt-5 border-black border-2 hover:bg-black hover:ring-2 hover:ring-black hover:text-white">COMMENT</button>
                     </div>
                 </div>
                 

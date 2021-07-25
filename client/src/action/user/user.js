@@ -82,3 +82,18 @@ export const productOrdered=(sendData)=>async (dispatch)=>{
     dispatch({type:'ORDER_PRODUCT', payload: data})
     dispatch({type:'DELETE_CART'})
 }
+
+export const addPost=(sendData)=> async (dispatch)=>
+{
+    console.log(sendData)
+    const {data}=await api.addPost(sendData)
+    console.log(data)
+    dispatch({type: 'CREATE_POST', payload: data})
+}
+
+export const getPosts=()=> async (dispatch)=>
+{
+    const {data}=await api.getPosts()
+    console.log(data)
+    dispatch({type: 'LOAD_POSTS', payload: data})
+}

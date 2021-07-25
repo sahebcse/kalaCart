@@ -29,10 +29,18 @@ export default function PaintingExpanded() {
     if (painting)
     {
         return (
-            <div>
-                <h1>{painting.title}</h1>
-                <p>{painting.description}</p>
-                <img src={painting.photo} />
+            <div className="grid grid-cols-2 h-screen">
+                <div className="bg-gray-200 flex content-center">
+                    <img className="object-center p-12 pt-16" src={painting.photo} style={{height: '500px', width: '500px', display: 'block', marginLeft: 'auto', marginRight: 'auto'}}/>
+                </div>
+                <div>
+                    <h1 className="text-5xl">{painting.title}</h1>
+                    {
+                        painting.reviews.map((comment)=>(
+                            <p>{comment.text}</p>
+                        ))
+                    }
+                </div>
             </div>
         )
     }
