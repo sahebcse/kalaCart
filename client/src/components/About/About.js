@@ -1,4 +1,5 @@
 import React from 'react'
+import Techstack from './Techstack'
 
 import {Typography,Grid} from '@material-ui/core'
 import NewProjectInput from '../../components/Admin/Projects/NewProjectInput'
@@ -11,9 +12,11 @@ function About() {
     const user = JSON.parse(localStorage.getItem('profile'))
     return (
         <div>
-          
+           <div>
+          <Techstack/>
+          </div>
+         <div>
           <Grid className="bg-gray-900" container>
-
           {
               projects.map((project) =>{
                   return (
@@ -24,7 +27,7 @@ function About() {
                 })
             }
             </Grid>
-          
+            </div>
          </div>
     )
 }
