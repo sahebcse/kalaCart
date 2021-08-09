@@ -21,6 +21,10 @@ const blogPostSchema=new mongoose.Schema({
         type: Number,
         default: 0
     },
+    createdOn: {
+        type: Date,
+        default: Date.now()
+    },
     photo: {
         type: String,
         default: 'https://cdn.shopify.com/s/files/1/1061/1924/products/Emoji_Icon_-_Smiling_grande.png?v=1571606089'

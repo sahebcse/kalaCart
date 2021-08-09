@@ -9,7 +9,7 @@ import Artwork from '../src/components/Paintings/Artwork'
 import Blog from './components/Blogs/Blog'
 import Navbar from './components/Layout/Navbar'
 import Login from './components/Auth/Login'
-import {getPaintings, getProjects, getTestimonials, getCartAndBoughtItems, getAuthData} from './action/user/user'
+import {getPaintings, getProjects, getTestimonials, getCartAndBoughtItems, getAuthData, getPosts} from './action/user/user'
 import {useDispatch} from 'react-redux'
 import ShoppingCart from './components/Shopping/ShoppingCart';
 import Checkout from './components/Checkout/Checkout'
@@ -19,6 +19,9 @@ import PaintingExpanded from './components/Paintings/painting/PaintingExpanded'
 import { loadStripe} from '@stripe/stripe-js'
 import {Elements} from '@stripe/react-stripe-js'
 import Orders from './components/Orders/Order'
+import BlogDashboard from './components/Admin/Blog/BlogDashboard';
+import BlogPost from './components/Blogs/BlogPost';
+import AdminPanel from './components/Admin/AdminPanel';
 
 const promise = loadStripe("pk_test_51J8GAsSH4Sh8XwNi3Gw7LEGc44TQTY63b8VdJP4D3fHL30bpHIJKlhL7BKcxex80KPwDZg08Adywy5WTeKLZbngP00FQwvXLWv")
 
@@ -41,6 +44,11 @@ function App() {
   useEffect(() =>{
     dispatch(getTestimonials());
   },[dispatch]);
+
+  useEffect(()=>
+  {
+    dispatch(getPosts())
+  },[dispatch])
   
   useEffect(()=>{
     //console.log("This runs")
@@ -57,6 +65,7 @@ function App() {
        <Route path="/About" exact><About/></Route>
        <Route path="/Artwork" exact><Artwork/></Route>
        <Route path="/Blog" exact><Blog/></Route>
+       <Route path='/blog/:id' exact><BlogPost /></Route>
        <Route path="/Testimonial" exact><Testimonial/></Route>
        <Route path="/Contact" exact><Contact/></Route>
        <Route path="/Login" exact><Login/></Route>
@@ -70,7 +79,9 @@ function App() {
           <PaintingExpanded />
         </Route>
        <Route path='/admin/painting' exact> <CreatePainting/> </Route>
-       <Route path='/admin/project'> <NewProjectInput /> </Route>
+       <Route path='/admin/project' exact> <NewProjectInput /> </Route>
+       <Route path='/admin/blog' exact> <BlogDashboard /> </Route>
+       <Route path='/admin' exact><AdminPanel /></Route>
        <Route path='/Orders'> <Orders /> </Route>
        
      </Switch>

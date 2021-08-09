@@ -96,15 +96,13 @@ const Navbar = () => {
             
             {user && (
               <div>
-              <Button variant="outlined" color="primary" onClick={()=>history.push('/Cart')} >
+                <span onClick={()=>history.push('/Cart')} className="text-black-600 hover:text-brand-700 hover:text-bold rounded-full py-3 px-6 hover:bg-green-400 hover:text-white">
                 <ShoppingCartIcon />
-                Go TO Cart
-              </Button>
-
-              <Button variant="outlined"  color="secondary" onClick={()=>history.push('/Orders')} >
+                </span>
+                <span onClick={()=>history.push('/Orders')} className="text-black-600 hover:text-brand-700 hover:text-bold rounded-full py-3 px-6 hover:bg-green-400 hover:text-white">
                 <LocalMallIcon />
-                Your Orders
-              </Button>
+                </span>
+              
               </div>
             )}
           
