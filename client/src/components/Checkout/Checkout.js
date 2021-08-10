@@ -1,22 +1,34 @@
 import React,{useState, useEffect} from 'react'
-import {Container, Grid, Typography, Box, Button} from '@material-ui/core'
+import {Container, Grid, Typography, Box, Button, TextField} from '@material-ui/core'
 import CartItem from '../Shopping/CartItem'
-import ProjectCard from '../Projects/ProjectCard'
 import {useSelector} from 'react-redux'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import {useDispatch} from 'react-redux'
 import ShopNowIcon from '@material-ui/icons/ShopTwoRounded'
-import {getClientSecretKey, productOrdered} from '../../action/user/user'
+import {getClientSecretKey, productOrdered, postUserAddress} from '../../action/user/user'
 import {useHistory} from 'react-router-dom'
+import {makeStyles} from "@material-ui/core/styles"
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: 200,
+      },
+    },
+  }));
 
 const Checkout = () => {
+    const classes=useStyles()
     const history = useHistory()
     const dispatch = useDispatch()
     const stripe = useStripe()
     const elements = useElements() 
     const shoppingCart = useSelector((state) =>state.shoppingcart)
+    const userAddress = useSelector((state) => state.user.userAddress)
 
-    const user = JSON.parse(localStorage.getItem('profile'))
+    const currUser = JSON.parse(localStorage.getItem('profile'))
+    console.log('ky achutiyap hau ',userAddress)
 
     const [error,setError] = useState(null, stripe)
     const [disabled, setDisabled] = useState(true);
@@ -24,6 +36,8 @@ const Checkout = () => {
     const [processing, setProcessing] = useState("")
     const [totalPrice, setTotalPrice] = useState(0);
     const [clientSecret, setClientSecret] = useState(null)
+    const [address, setAddress] = useState(userAddress)
+    const [newAddress, setNewAddress] = useState({addr:'', postal:'', city:'', state:'', country:''})
 
     useEffect(() =>{
         var newTotal = 0;
@@ -58,7 +72,7 @@ const Checkout = () => {
             setSucceeded(true)
             setError(null)
             setProcessing(false);
-            const data = {userEmail :user?.result.email}
+            const data = {userEmail :currUser?.result.email}
             dispatch(productOrdered(data))
             history.replace('/Orders')
         })
@@ -70,11 +84,37 @@ const Checkout = () => {
         setError(e.error ? e.error.message : "")
     }
 
+    const handleAddressChange = ()=>{
+
+        if(newAddress.addr!=='' && newAddress.postal!=='' && newAddress.city!=='' && newAddress.state!=='' && newAddress.country!==''){
+            setAddress([newAddress.addr, newAddress.postal, newAddress.city, newAddress.state, newAddress.country])
+            dispatch(postUserAddress({userEmail: currUser?.result.email,addr:newAddress.addr,postal:newAddress.postal,city: newAddress.city, state:newAddress.state,country: newAddress.country}))
+        }
+        
+    }
+
     return (
-        <Container>
+        <Container spacing={3}>
             <Box borderBottom={1}>
                 <Grid className="m-4">
                     <Typography variant="h4">Address</Typography>
+                    {address?
+                        <Grid>
+                            <Typography variant="h6">{address[0]}</Typography>
+                            <Typography variant="h6">{address[1]}-{address[2]}, {address[3]}</Typography>
+                            <Typography variant="h6">{address[4]}</Typography>
+                        </Grid>
+                       : <Button variant="outlined" color="secondary">Set Address First</Button>
+                    }
+                    <form className={classes.root} noValidate>
+                        <TextField  label="Address" required onChange={(e)=>setNewAddress({...newAddress, addr: e.target.value})}/>
+                        <TextField  label="Postal Code" required onChange={(e)=>setNewAddress({...newAddress, postal: e.target.value})}/>
+                        <TextField  label="City" required onChange={(e)=>setNewAddress({...newAddress, city: e.target.value})}/>
+                        <TextField  label="State" required onChange={(e)=>setNewAddress({...newAddress, state: e.target.value})}/>
+                        <TextField  label="Country" required onChange={(e)=>setNewAddress({...newAddress, country: e.target.value})}/>
+
+                    </form>
+                <Button variant="contained" color="primary" onClick={handleAddressChange}>Set Address</Button>
                     
                 </Grid>
             </Box>

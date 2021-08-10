@@ -15,6 +15,9 @@ const userSchema=new Schema({
     googleId: String,
     boughtPaintings:[{type: Schema.Types.ObjectId, ref:'Painting'}],
     cartPaintings:[{type: Schema.Types.ObjectId, ref:'Painting'}],
+    address:{
+        type:[String],
+    }
 })
 
 const User=mongoose.model('User', userSchema)

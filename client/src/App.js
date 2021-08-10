@@ -9,7 +9,7 @@ import Artwork from '../src/components/Paintings/Artwork'
 import Blog from './components/Blogs/Blog'
 import Navbar from './components/Layout/Navbar'
 import Login from './components/Auth/Login'
-import {getPaintings, getProjects, getTestimonials, getCartAndBoughtItems, getAuthData, getPosts} from './action/user/user'
+import {getPaintings, getProjects, getTestimonials, getCartAndBoughtItems, getAuthData, getPosts, getUserAddress} from './action/user/user'
 import {useDispatch} from 'react-redux'
 import ShoppingCart from './components/Shopping/ShoppingCart';
 import Checkout from './components/Checkout/Checkout'
@@ -30,7 +30,9 @@ function App() {
   const user = JSON.parse(localStorage.getItem('profile'))
     useEffect(() =>{
         if(user){
+          console.log('getting address from the server')
           dispatch(getCartAndBoughtItems(user?.result.email))
+          dispatch(getUserAddress(user?.result.googleId))
         }
     },[user])
   useEffect(() => {

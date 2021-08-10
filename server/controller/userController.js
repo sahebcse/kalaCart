@@ -10,8 +10,10 @@ const createUser=async (req, res)=>
 {
     const isadmin = true
     const user = await User.findOne({googleId:req.body.googleId});
-    if(user)
+    if(user){
+        console.log('login', user)
         return res.status(201).json(user);
+    }
 
     else
     {
@@ -31,9 +33,9 @@ const createUser=async (req, res)=>
 
 const getUser= (req, res)=>
 {
-    console.log("This route runs")
-    console.log(req.params.id)
-    User.findById(req.params.id).populate({path:'cart.product'}).exec((err, user)=>
+    const googleId = req.params.googleId
+    console.log('getting user',req.params.googleId)
+    User.findOne({googleId:googleId}).populate({path:'cart.product'}).exec((err, user)=>
     {
         if (err)
         {
@@ -42,7 +44,7 @@ const getUser= (req, res)=>
         else
         {
             console.log(user)
-            return res.json(user)
+            return res.json(user.address)
         }
     })
 }
@@ -159,5 +161,21 @@ const productOrdered = async (req, res) => {
     }
 }
 
+const setAddress = async (req, res) => {
+    try {
+        console.log('aa bhi nahi raha bc')
+        const {userEmail} = req.body;
+        const user = await User.findOne({email: userEmail})
+        const {addr,postal,city,state,country} = req.body;
+        console.log('chal raha',addr,postal,city,state,country)
+        user.address = [addr,postal,city,state,country];
+        await user.save()
+        console.log(user)
+        res.status(200).json(user.address)
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-module.exports={createUser, getUser, getUsers, deleteUser, addToCart, getCartAndBoughtItems, deleteCartItems, removeItemFromCart, getClientSecretKey, productOrdered}
+
+module.exports={createUser, getUser, getUsers, deleteUser, addToCart, getCartAndBoughtItems, deleteCartItems, removeItemFromCart, getClientSecretKey, productOrdered, setAddress}
