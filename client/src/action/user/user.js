@@ -97,3 +97,15 @@ export const getPosts=()=> async (dispatch)=>
     console.log(data)
     dispatch({type: 'LOAD_POSTS', payload: data})
 }
+
+export const postUserAddress =(sendData)=> async (dispatch)=>{
+    const {data}=await api.postUserAddress(sendData)
+    console.log('add change', data)
+    dispatch({type: 'POST_USER_ADDRESS', payload:data})
+}
+
+export const getUserAddress =(id)=> async (dispatch)=>{
+    const {data}=await api.getUserAddress(id)
+    console.log('here uis yhe user address', data)
+    dispatch({type:'POST_USER_ADDRESS', payload:data})
+}

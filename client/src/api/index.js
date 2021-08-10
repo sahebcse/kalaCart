@@ -10,6 +10,8 @@ if(jwtToken!=null)
 
 export const login = (data) => axios.post(`${URL}/user`,data);
 
+export const getUserAddress = (data)=>axios.get(`${URL}/getUserAddress/${data}`);
+
 export const getPaintings = ()=>axios.get(`${URL}/painting`)
 
 export const createPainting=(data)=>axios.post(`${URL}/painting`, data, {
@@ -59,3 +61,5 @@ export const productOrdered = (data)=>axios.post(`${URL}/user/productOrdered`,da
 export const addPost = (data)=>axios.post(`${URL}/post`, data);
 
 export const getPosts=()=>axios.get(`${URL}/posts`)
+
+export const postUserAddress = (data)=>axios.post(`${URL}/user/setAddress`,data);

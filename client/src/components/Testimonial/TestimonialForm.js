@@ -26,7 +26,7 @@ export default function TestimonialForm() {
     const handleSubmit=(e)=>
     {
         e.preventDefault()
-        const data={name, identity, thoughts, email:user?.result.user.email}
+        const data={name, identity, thoughts, email:user?.result.email}
         dispatch(createTestimonial(data))
     }
 
