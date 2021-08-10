@@ -15,8 +15,10 @@ function Techstack() {
     const images=[T1,T2,T3,T4,T5,T6];
     
     return (
-        <div className="justify-items-center mx-40">
-        <h1 className=" font-serif text-2xl text-black text-extrabold text-italic">TechStack Used</h1>
+        <div className=" mx-40">
+        <span className="justify-items-center">
+        <h1 className=" font-serif text-2xl text-black text-extrabold text-italic">Hands on Tools</h1>
+        </span> 
         <div className="flex flex-horizontal m-2 p-2">
         {images.map((image)=>
             (<img className="object-fill m-2 p-2 transition duration-500 ease-in-out bg-blue-100 hover:bg-red-600 transform hover:-translate-y-1 hover:scale-110 ..." src={image} height='80' width='120' alt=" "/>)
